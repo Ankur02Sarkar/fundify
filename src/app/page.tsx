@@ -1,8 +1,16 @@
+import { Features } from "@/components/blocks/features-2";
+import FAQsFour from "@/components/faqs-4";
+import FooterSection from "@/components/footer";
 import HeroSection from "@/components/hero-section";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <HeroSection />
+    <div>
+      <HeroSection />
+      <Features />
+      <FAQsFour />
+      <FooterSection />
+    </div>
   );
 }
