@@ -35,8 +35,14 @@ export const HeroHeader = () => {
                             <Link
                                 href="/"
                                 aria-label="home"
-                                className="flex items-center space-x-2">
-                                <Logo />
+                                className="flex items-center gap-2">
+                                <img 
+                                    src="/logo.jpeg" 
+                                    alt="Fundify Logo"
+                                    width={32}
+                                    height={32}
+                                />
+                                Fundify
                             </Link>
 
                             <button
