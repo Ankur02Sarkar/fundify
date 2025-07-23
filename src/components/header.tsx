@@ -1,21 +1,35 @@
 'use client'
 import Link from 'next/link'
 import { Logo } from '@/components/logo'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
+import { useTranslation } from 'react-i18next'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
-const menuItems = [
-    { name: 'Features', href: '#link' },
-    { name: 'Solution', href: '#link' },
-    { name: 'Pricing', href: '#link' },
-    { name: 'About', href: '#link' },
-]
+
 
 export const HeroHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
     const [isScrolled, setIsScrolled] = React.useState(false)
+    const { t, i18n } = useTranslation()
+
+    const menuItems = [
+        { name: t('nav.features'), href: '#link' },
+        { name: t('nav.solution'), href: '#link' },
+        { name: t('nav.pricing'), href: '#link' },
+        { name: t('nav.about'), href: '#link' },
+    ]
+
+    const changeLanguage = (lng: string) => {
+        i18n.changeLanguage(lng)
+    }
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -83,13 +97,29 @@ export const HeroHeader = () => {
                                 </ul>
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="outline" size="sm" className="gap-2">
+                                            <Globe className="h-4 w-4" />
+                                            {i18n.language === 'ar' ? 'العربية' : 'English'}
+                                        </Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end">
+                                        <DropdownMenuItem onClick={() => changeLanguage('en')}>
+                                            English
+                                        </DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => changeLanguage('ar')}>
+                                            العربية
+                                        </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
                                 <Button
                                     asChild
                                     variant="outline"
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#">
-                                        <span>Login</span>
+                                        <span>{t('nav.login')}</span>
                                     </Link>
                                 </Button>
                                 <Button
@@ -97,7 +127,7 @@ export const HeroHeader = () => {
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#">
-                                        <span>Sign Up</span>
+                                        <span>{t('nav.signup')}</span>
                                     </Link>
                                 </Button>
                                 <Button
@@ -105,7 +135,7 @@ export const HeroHeader = () => {
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
                                     <Link href="#">
-                                        <span>Get Started</span>
+                                        <span>{t('nav.getStarted')}</span>
                                     </Link>
                                 </Button>
                             </div>

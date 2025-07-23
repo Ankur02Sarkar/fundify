@@ -1,76 +1,118 @@
 'use client'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Badge } from '@/components/ui/badge'
+import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 
-export default function FAQsFour() {
-    const faqItems = [
-        {
-            id: 'item-1',
-            question: 'How long does shipping take?',
-            answer: 'Standard shipping takes 3-5 business days, depending on your location. Express shipping options are available at checkout for 1-2 business day delivery.',
-        },
-        {
-            id: 'item-2',
-            question: 'What payment methods do you accept?',
-            answer: 'We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. For enterprise customers, we also offer invoicing options.',
-        },
-        {
-            id: 'item-3',
-            question: 'Can I change or cancel my order?',
-            answer: 'You can modify or cancel your order within 1 hour of placing it. After this window, please contact our customer support team who will assist you with any changes.',
-        },
-        {
-            id: 'item-4',
-            question: 'Do you ship internationally?',
-            answer: "Yes, we ship to over 50 countries worldwide. International shipping typically takes 7-14 business days. Additional customs fees may apply depending on your country's import regulations.",
-        },
-        {
-            id: 'item-5',
-            question: 'What is your return policy?',
-            answer: 'We offer a 30-day return policy for most items. Products must be in original condition with tags attached. Some specialty items may have different return terms, which will be noted on the product page.',
-        },
-    ]
+export function Faqs() {
+    const { t } = useTranslation()
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: {
+            opacity: 1,
+            x: 0
+        }
+    }
 
     return (
-        <section className="py-16 md:py-24">
-            <div className="mx-auto max-w-5xl px-4 md:px-6">
-                <div className="mx-auto max-w-xl text-center">
-                    <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">Frequently Asked Questions</h2>
-                    <p className="text-muted-foreground mt-4 text-balance">Discover quick and comprehensive answers to common questions about our platform, services, and features.</p>
-                </div>
-
-                <div className="mx-auto mt-12 max-w-xl">
-                    <Accordion
-                        type="single"
-                        collapsible
-                        className="bg-muted dark:bg-muted/50 w-full rounded-2xl p-1">
-                        {faqItems.map((item) => (
-                            <div
-                                className="group"
-                                key={item.id}>
-                                <AccordionItem
-                                    value={item.id}
-                                    className="data-[state=open]:bg-card dark:data-[state=open]:bg-muted peer rounded-xl border-none px-7 py-1 data-[state=open]:border-none data-[state=open]:shadow-sm">
-                                    <AccordionTrigger className="cursor-pointer text-base hover:no-underline">{item.question}</AccordionTrigger>
-                                    <AccordionContent>
-                                        <p className="text-base">{item.answer}</p>
-                                    </AccordionContent>
-                                </AccordionItem>
-                                <hr className="mx-7 border-dashed group-last:hidden peer-data-[state=open]:opacity-0" />
-                            </div>
-                        ))}
-                    </Accordion>
-
-                    <p className="text-muted-foreground mt-6 px-8">
-                        Can't find what you're looking for? Contact our{' '}
-                        <Link
-                            href="#"
-                            className="text-primary font-medium hover:underline">
-                            customer support team
-                        </Link>
+        <section className="py-16 md:py-32 bg-gradient-to-br from-amber-50 via-white to-blue-50 dark:from-amber-950/10 dark:via-background dark:to-blue-950/10">
+            <div className="mx-auto max-w-5xl px-6">
+                <motion.div 
+                    className="text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-amber-600 text-white border-0" variant="outline">
+                        {t('faqs.badge')}
+                    </Badge>
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl bg-gradient-to-r from-blue-600 via-blue-800 to-amber-600 bg-clip-text text-transparent">
+                        {t('faqs.title')}
+                    </h2>
+                    <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+                        {t('faqs.subtitle')}
                     </p>
-                </div>
+                </motion.div>
+                
+                <motion.div 
+                    className="mx-auto mt-8 max-w-3xl md:mt-16"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                >
+                    <Accordion type="single" collapsible className="w-full space-y-4">
+                        <motion.div variants={itemVariants}>
+                            <AccordionItem value="item-1" className="border border-blue-100 dark:border-blue-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-blue-50/30 dark:from-background dark:to-blue-950/10">
+                                <AccordionTrigger className="text-left hover:text-blue-600 transition-colors">
+                                    {t('faqs.questions.security.question')}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed">
+                                    {t('faqs.questions.security.answer')}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </motion.div>
+                        
+                        <motion.div variants={itemVariants}>
+                            <AccordionItem value="item-2" className="border border-amber-100 dark:border-amber-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-amber-50/30 dark:from-background dark:to-amber-950/10">
+                                <AccordionTrigger className="text-left hover:text-amber-600 transition-colors">
+                                    {t('faqs.questions.fees.question')}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed">
+                                    {t('faqs.questions.fees.answer')}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </motion.div>
+                        
+                        <motion.div variants={itemVariants}>
+                            <AccordionItem value="item-3" className="border border-blue-100 dark:border-blue-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-blue-50/30 dark:from-background dark:to-blue-950/10">
+                                <AccordionTrigger className="text-left hover:text-blue-600 transition-colors">
+                                    {t('faqs.questions.support.question')}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed">
+                                    {t('faqs.questions.support.answer')}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </motion.div>
+                        
+                        <motion.div variants={itemVariants}>
+                            <AccordionItem value="item-4" className="border border-amber-100 dark:border-amber-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-amber-50/30 dark:from-background dark:to-amber-950/10">
+                                <AccordionTrigger className="text-left hover:text-amber-600 transition-colors">
+                                    {t('faqs.questions.integration.question')}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed">
+                                    {t('faqs.questions.integration.answer')}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </motion.div>
+                        
+                        <motion.div variants={itemVariants}>
+                            <AccordionItem value="item-5" className="border border-blue-100 dark:border-blue-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-blue-50/30 dark:from-background dark:to-blue-950/10">
+                                <AccordionTrigger className="text-left hover:text-blue-600 transition-colors">
+                                    {t('faqs.questions.started.question')}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-muted-foreground leading-relaxed">
+                                    {t('faqs.questions.started.answer')}
+                                </AccordionContent>
+                            </AccordionItem>
+                        </motion.div>
+                    </Accordion>
+                </motion.div>
             </div>
         </section>
     )

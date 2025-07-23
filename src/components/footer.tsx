@@ -1,165 +1,190 @@
+'use client'
+
 import { Logo } from '@/components/logo'
 import Link from 'next/link'
+import { motion } from 'motion/react'
+import { useTranslation } from 'react-i18next'
+import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react'
 
-const links = [
-    {
-        title: 'Features',
-        href: '#',
-    },
-    {
-        title: 'Solution',
-        href: '#',
-    },
-    {
-        title: 'Customers',
-        href: '#',
-    },
-    {
-        title: 'Pricing',
-        href: '#',
-    },
-    {
-        title: 'Help',
-        href: '#',
-    },
-    {
-        title: 'About',
-        href: '#',
-    },
-]
 
-export default function FooterSection() {
+
+export default function Footer() {
+    const { t } = useTranslation()
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0
+        }
+    }
+
     return (
-        <footer className="py-16 md:py-32">
-            <div className="mx-auto max-w-5xl px-6">
-                <Link
-                    href="/"
-                    aria-label="go home"
-                    className="mx-auto block size-fit">
-                    <Logo />
-                </Link>
+        <footer className="bg-gradient-to-br from-blue-950 via-blue-900 to-amber-900 text-white relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
+            
+            <motion.div 
+                className="relative mx-auto max-w-7xl px-6 py-16 lg:px-8"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* Company Info */}
+                    <motion.div variants={itemVariants} className="lg:col-span-2">
+                        <div className="flex items-center mb-4">
+                            <Logo className="text-white" uniColor />
+                            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-amber-200 bg-clip-text text-transparent">
+                                Fundify
+                            </span>
+                        </div>
+                        <p className="text-blue-100 mb-6 max-w-md leading-relaxed">
+                            {t('footer.description')}
+                        </p>
+                        <div className="space-y-3">
+                            <div className="flex items-center text-blue-100">
+                                <Mail className="size-4 mr-3 text-amber-400" />
+                                <span className="text-sm">contact@fundify.ae</span>
+                            </div>
+                            <div className="flex items-center text-blue-100">
+                                <Phone className="size-4 mr-3 text-amber-400" />
+                                <span className="text-sm">+971 4 123 4567</span>
+                            </div>
+                            <div className="flex items-center text-blue-100">
+                                <MapPin className="size-4 mr-3 text-amber-400" />
+                                <span className="text-sm">Dubai, United Arab Emirates</span>
+                            </div>
+                        </div>
+                    </motion.div>
 
-                <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
-                    {links.map((link, index) => (
-                        <Link
-                            key={index}
-                            href={link.href}
-                            className="text-muted-foreground hover:text-primary block duration-150">
-                            <span>{link.title}</span>
-                        </Link>
-                    ))}
+                    {/* Services */}
+                    <motion.div variants={itemVariants}>
+                        <h3 className="text-lg font-semibold mb-4 text-amber-200">{t('footer.services.title')}</h3>
+                        <ul className="space-y-3">
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.services.expense')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.services.investment')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.services.budgeting')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.services.reports')}
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
+
+                    {/* Company */}
+                    <motion.div variants={itemVariants}>
+                        <h3 className="text-lg font-semibold mb-4 text-amber-200">{t('footer.company.title')}</h3>
+                        <ul className="space-y-3">
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.company.about')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.company.careers')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.company.contact')}
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
+                                    {t('footer.company.blog')}
+                                </Link>
+                            </li>
+                        </ul>
+                    </motion.div>
                 </div>
-                <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="X/Twitter"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M10.488 14.651L15.25 21h7l-7.858-10.478L20.93 3h-2.65l-5.117 5.886L8.75 3h-7l7.51 10.015L2.32 21h2.65zM16.25 19L5.75 5h2l10.5 14z"></path>
-                        </svg>
-                    </Link>
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path>
-                        </svg>
-                    </Link>
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Facebook"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95"></path>
-                        </svg>
-                    </Link>
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Threads"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="1.5"
-                                d="M19.25 8.505c-1.577-5.867-7-5.5-7-5.5s-7.5-.5-7.5 8.995s7.5 8.996 7.5 8.996s4.458.296 6.5-3.918c.667-1.858.5-5.573-6-5.573c0 0-3 0-3 2.5c0 .976 1 2 2.5 2s3.171-1.027 3.5-3c1-6-4.5-6.5-6-4"
-                                color="currentColor"></path>
-                        </svg>
-                    </Link>
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3"></path>
-                        </svg>
-                    </Link>
-                    <Link
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="TikTok"
-                        className="text-muted-foreground hover:text-primary block">
-                        <svg
-                            className="size-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1em"
-                            height="1em"
-                            viewBox="0 0 24 24">
-                            <path
-                                fill="currentColor"
-                                d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48"></path>
-                        </svg>
-                    </Link>
-                </div>
-                <span className="text-muted-foreground block text-center text-sm"> © {new Date().getFullYear()} Tailark, All rights reserved</span>
-            </div>
+
+                {/* Social Media & Bottom Section */}
+                <motion.div 
+                    variants={itemVariants}
+                    className="mt-12 pt-8 border-t border-blue-800/30"
+                >
+                    <div className="flex flex-col md:flex-row justify-between items-center">
+                        <div className="flex space-x-6 mb-4 md:mb-0">
+                            <motion.a 
+                                href="#" 
+                                className="text-blue-200 hover:text-white transition-colors duration-200"
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Facebook className="size-5" />
+                            </motion.a>
+                            <motion.a 
+                                href="#" 
+                                className="text-blue-200 hover:text-white transition-colors duration-200"
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Twitter className="size-5" />
+                            </motion.a>
+                            <motion.a 
+                                href="#" 
+                                className="text-blue-200 hover:text-white transition-colors duration-200"
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Linkedin className="size-5" />
+                            </motion.a>
+                            <motion.a 
+                                href="#" 
+                                className="text-blue-200 hover:text-white transition-colors duration-200"
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Instagram className="size-5" />
+                            </motion.a>
+                        </div>
+                        
+                        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                            <div className="flex space-x-6 text-sm">
+                                <Link href="#" className="text-blue-200 hover:text-white transition-colors duration-200">
+                                    {t('footer.legal.privacy')}
+                                </Link>
+                                <Link href="#" className="text-blue-200 hover:text-white transition-colors duration-200">
+                                    {t('footer.legal.terms')}
+                                </Link>
+                                <Link href="#" className="text-blue-200 hover:text-white transition-colors duration-200">
+                                    {t('footer.legal.cookies')}
+                                </Link>
+                            </div>
+                            <p className="text-blue-200 text-sm">
+                                © 2024 Fundify. {t('footer.rights')}
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
+            </motion.div>
         </footer>
     )
 }

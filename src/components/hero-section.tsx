@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
@@ -8,6 +9,7 @@ import { AnimatedGroup } from '@/components/ui/animated-group'
 import { HeroHeader } from './header'
 import LogoCloud from './logo-cloud'
 import { WavyBackground } from './ui/wavy-background'
+import { useTranslation } from 'react-i18next'
 
 const transitionVariants = {
     item: {
@@ -30,6 +32,8 @@ const transitionVariants = {
 }
 
 export default function HeroSection() {
+    const { t } = useTranslation()
+    
     return (
         <WavyBackground>
             <main className="overflow-hidden">
@@ -83,7 +87,7 @@ export default function HeroSection() {
                                     <Link
                                         href="#link"
                                         className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
-                                        <span className="text-foreground text-sm">New: AI-Powered Financial Insights</span>
+                                        <span className="text-foreground text-sm">{t('hero.badge')}</span>
                                         <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 
                                         <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -104,7 +108,7 @@ export default function HeroSection() {
                                     speedSegment={0.3}
                                     as="h1"
                                     className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                                    Smart Financial Management Made Simple
+                                    {t('hero.title')}
                                 </TextEffect>
                                 <TextEffect
                                     per="line"
@@ -113,7 +117,7 @@ export default function HeroSection() {
                                     delay={0.5}
                                     as="p"
                                     className="mx-auto mt-8 max-w-2xl text-balance text-lg">
-                                    Take control of your finances with our intelligent platform. Track expenses, manage investments, and get AI-powered insights to make smarter financial decisions.
+                                    {t('hero.subtitle')}
                                 </TextEffect>
 
                                 <AnimatedGroup
@@ -137,7 +141,7 @@ export default function HeroSection() {
                                             size="lg"
                                             className="rounded-xl px-5 text-base">
                                             <Link href="#link">
-                                                <span className="text-nowrap">Start Managing</span>
+                                                <span className="text-nowrap">{t('hero.cta')}</span>
                                             </Link>
                                         </Button>
                                     </div>
@@ -148,7 +152,7 @@ export default function HeroSection() {
                                         variant="ghost"
                                         className="h-10.5 rounded-xl px-5">
                                         <Link href="#link">
-                                            <span className="text-nowrap">Schedule Demo</span>
+                                            <span className="text-nowrap">{t('hero.secondaryCta')}</span>
                                         </Link>
                                     </Button>
                                 </AnimatedGroup>
@@ -176,14 +180,14 @@ export default function HeroSection() {
                                     <Image
                                         className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
                                         src="/finance-dashboard.png"
-                                        alt="Financial Dashboard Preview"
+                                        alt={t('hero.imageAlt')}
                                         width="2700"
                                         height="1440"
                                     />
                                     <Image
                                         className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
                                         src="/finance-dashboard.png"
-                                        alt="Financial Dashboard Preview"
+                                        alt={t('hero.imageAlt')}
                                         width="2700"
                                         height="1440"
                                     />
