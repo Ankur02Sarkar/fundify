@@ -1,3 +1,4 @@
+import BentoGridComp from "@/components/bento";
 import { Features } from "@/components/blocks/features-2";
 import { Faqs } from "@/components/faqs-4";
 import FooterSection from "@/components/footer";
@@ -9,6 +10,7 @@ export default function Home() {
     <div>
       <HeroSection />
       <Features />
+      <BentoGridComp />
       <Faqs />
       <FooterSection />
     </div>
