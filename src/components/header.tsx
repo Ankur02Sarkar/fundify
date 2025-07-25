@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import Image from 'next/image'
 
 
 
@@ -21,10 +22,11 @@ export const HeroHeader = () => {
     const { t, i18n } = useTranslation()
 
     const menuItems = [
-        { name: t('nav.features'), href: '#link' },
-        { name: t('nav.solution'), href: '#link' },
+        { name: t('nav.services'), href: '/services' },
+        // { name: t('nav.solution'), href: '#link' },
         { name: t('nav.pricing'), href: '#link' },
         { name: t('nav.about'), href: '#link' },
+        { name: t('nav.contact'), href: '#link' },
     ]
 
     const changeLanguage = (lng: string) => {
@@ -50,7 +52,7 @@ export const HeroHeader = () => {
                                 href="/"
                                 aria-label="home"
                                 className="flex items-center gap-2">
-                                <img 
+                                <Image 
                                     src="/logo.jpeg" 
                                     alt="Fundify Logo"
                                     width={32}
