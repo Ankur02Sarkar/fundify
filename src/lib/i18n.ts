@@ -17,7 +17,7 @@ const resources = {
       },
       hero: {
         badge: "New: AI-Powered Financial Insights",
-        title: "Smart Financial Management Made Simple",
+        title: "Fueling UAE's Growth, One Business at a Time",
         subtitle:
           "Take control of your finances with our intelligent platform. Track expenses, manage investments, and get AI-powered insights to make smarter financial decisions.",
         cta: "Start Managing",
