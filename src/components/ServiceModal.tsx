@@ -43,12 +43,6 @@ export default function ServiceModal({
           {service.detail ??
             'More detailed information about this service will be shown here. You can customize this per service item.'}
         </div>
-
-        <DialogClose asChild>
-          <button className="absolute top-3 right-3 text-muted-foreground hover:text-primary focus:outline-none">
-            <X className="w-5 h-5" />
-          </button>
-        </DialogClose>
       </DialogContent>
     </Dialog>
   )

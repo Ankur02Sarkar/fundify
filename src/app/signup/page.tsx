@@ -1,22 +1,28 @@
-import { Metadata } from 'next'
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
-
-export const metadata: Metadata = {
-  title: 'Sign Up - Fundify',
-  description: 'Create your Fundify account',
-}
+import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 
 export default function SignUpPage() {
+  const { t, i18n } = useTranslation()
+
+  useEffect(() => {
+    // Initialize i18n if not already done
+    if (!i18n.isInitialized) {
+      import('@/lib/i18n')
+    }
+  }, [])
   return (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
+          <CardTitle className="text-2xl font-bold">{t('signup.hero.title')}</CardTitle>
           <CardDescription>
-            Join Fundify and start your fundraising journey
+            {t('signup.hero.subtitle')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -24,25 +30,25 @@ export default function SignUpPage() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-1">
-                  First Name
+                  {t('signup.form.firstName')}
                 </label>
                 <Input
                   type="text"
                   id="firstName"
                   name="firstName"
-                  placeholder="John"
+                  placeholder={t('signup.form.firstName')}
                   required
                 />
               </div>
               <div>
                 <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-1">
-                  Last Name
+                  {t('signup.form.lastName')}
                 </label>
                 <Input
                   type="text"
                   id="lastName"
                   name="lastName"
-                  placeholder="Doe"
+                  placeholder={t('signup.form.lastName')}
                   required
                 />
               </div>
@@ -50,39 +56,39 @@ export default function SignUpPage() {
             
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1">
-                Email
+                {t('signup.form.email')}
               </label>
               <Input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder={t('signup.form.email')}
                 required
               />
             </div>
             
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-foreground mb-1">
-                Password
+                {t('signup.form.password')}
               </label>
               <Input
                 type="password"
                 id="password"
                 name="password"
-                placeholder="Create a strong password"
+                placeholder={t('signup.form.password')}
                 required
               />
             </div>
             
             <div>
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-1">
-                Confirm Password
+                {t('signup.form.confirmPassword')}
               </label>
               <Input
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
-                placeholder="Confirm your password"
+                placeholder={t('signup.form.confirmPassword')}
                 required
               />
             </div>
@@ -96,27 +102,27 @@ export default function SignUpPage() {
                 required
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-muted-foreground">
-                I agree to the{' '}
+                {t('signup.form.terms')}{' '}
                 <Link href="#" className="text-primary hover:underline">
-                  Terms of Service
+                  {t('signup.form.termsLink')}
                 </Link>{' '}
-                and{' '}
+                {t('signup.form.and')}{' '}
                 <Link href="#" className="text-primary hover:underline">
-                  Privacy Policy
+                  {t('signup.form.privacyLink')}
                 </Link>
               </label>
             </div>
             
             <Button type="submit" className="w-full">
-              Create Account
+              {t('signup.form.submit')}
             </Button>
           </form>
           
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
-              Already have an account?{' '}
+              {t('signup.form.haveAccount')}{' '}
               <Link href="/login" className="text-primary hover:underline font-medium">
-                Sign in
+                {t('signup.form.signIn')}
               </Link>
             </p>
           </div>
