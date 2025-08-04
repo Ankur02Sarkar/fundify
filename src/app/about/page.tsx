@@ -20,7 +20,8 @@ export default function AboutPage() {
           </p>
         </div>
         
-        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2">
+
+        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-2 px-20">
           <div>
             <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
             <p className="mt-4 text-muted-foreground">
@@ -35,6 +36,29 @@ export default function AboutPage() {
             <p className="mt-4 text-muted-foreground">
               We envision a world where funding flows freely to the most impactful projects, 
               creating positive change across communities and industries worldwide.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <h2 className="text-3xl font-bold text-center text-foreground mb-8">Who We Are</h2>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-6">
+              Fundify was born from a simple observation: too many brilliant ideas never see the light of day 
+              due to funding barriers. Founded in 2023 by a team of passionate entrepreneurs, technologists, 
+              and financial experts, we set out to bridge the gap between innovative projects and the capital 
+              they need to succeed.
+            </p>
+            <p className="text-lg text-muted-foreground mb-6">
+              Our diverse team brings together decades of experience from fintech, venture capital, 
+              and startup ecosystems. We understand both sides of the funding equation – the challenges 
+              faced by project creators and the needs of investors and backers looking for meaningful 
+              opportunities to support.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Today, Fundify serves thousands of creators, entrepreneurs, and organizations worldwide, 
+              having facilitated over $50 million in successful funding campaigns. We're not just a platform; 
+              we're a community dedicated to turning ideas into reality.
             </p>
           </div>
         </div>
