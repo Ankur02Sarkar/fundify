@@ -83,7 +83,7 @@ export function PricingSection({
 				/>
 			</motion.div>
 			<motion.div 
-				className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-3"
+				className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-3"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.6, delay: 0.4 }}
@@ -129,7 +129,7 @@ export function PricingFrequencyToggle({
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<span className="relative z-10">{freq}</span>
+						<span className={cn(frequency === freq && 'text-white', "relative z-10")}>{freq}</span>
 						{frequency === freq && (
 							<motion.span
 								layoutId="frequency"
@@ -188,7 +188,7 @@ export function PricingCard({
 			<div
 				className={cn(
 				'bg-gradient-to-r from-blue-50 to-white dark:from-blue-900 dark:to-slate-900 rounded-t-xl border-b border-blue-200 dark:border-blue-700 p-6',
-				plan.highlighted && 'from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 border-blue-200 dark:border-blue-800',
+				plan.highlighted && 'pt-12 from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 border-blue-200 dark:border-blue-800',
 			)}
 			>
 				<div className="absolute top-3 right-3 z-10 flex items-center gap-2">

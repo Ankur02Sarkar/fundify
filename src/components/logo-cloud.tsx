@@ -4,8 +4,8 @@ import Image from 'next/image'
 
 export default function LogoCloud() {
     return (
-        <section className="bg-background overflow-hidden py-2 mt-28">
-            <div className="group relative m-auto max-w-7xl px-6">
+        <section className="relative bg-background overflow-hidden py-2 mt-28">
+            <div className="group relative m-auto max-w-7xl px-6 mb-20">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="md:max-w-44 md:border-r md:pr-6">
                         <p className="text-end text-sm">Powering the best businesses</p>

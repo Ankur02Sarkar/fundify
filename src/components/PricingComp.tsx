@@ -64,10 +64,6 @@ const PLANS = [
 				tooltip: 'Track payments, interest, and schedules automatically',
 			},
 			{ text: 'Priority support', tooltip: 'Phone and chat support' },
-			{
-				text: 'API access',
-				tooltip: 'Integrate with your existing systems',
-			},
 			{ text: 'Custom reporting' },
 		],
 		btn: {
@@ -87,7 +83,6 @@ const PLANS = [
 			{ text: 'Everything in Professional, plus:' },
 			{ text: 'White-label solution' },
 			{ text: 'Advanced AI risk assessment' },
-			{ text: 'Multi-entity management' },
 			{
 				text: 'Custom integrations',
 				tooltip: 'Tailored integrations with your systems',
@@ -96,9 +91,7 @@ const PLANS = [
 			{
 				text: 'Advanced compliance tools',
 				tooltip: 'Meet regulatory requirements with ease',
-			},
-			{ text: '24/7 premium support' },
-			{ text: 'Custom training & onboarding' },
+			}
 		],
 		btn: {
 			text: 'Contact Sales',

@@ -1,9 +1,9 @@
 # Second Brain: Fundify Frontend
 
 ## 🎯 Current Focus
-- Unified color scheme across all components with consistent blue-only gradients
-- Replaced amber/gold colors with blue shades for better visual cohesion
-- Enhanced visual consistency across FAQs, Footer, Features, and Services components
+- Enhanced visual effects with gradient overlays for improved depth and aesthetics
+- Added white-to-transparent gradient overlays to create subtle foggy fade effects
+- Maintaining unified blue-only color scheme across all components
 
 ## ✅ Project Checklist
 - [x] Initialize Next.js project with `bun`
@@ -20,6 +20,8 @@
 - [x] Updated pricing content for AI-powered finance management platform
 - [x] Implemented and refined blue gradient color scheme
 - [x] Updated all components (FAQs, Footer, Features, Services) with consistent blue-only theme
+- [x] Added white-to-transparent gradient overlays to Features and FAQs sections
+- [x] Added white-to-blue gradient at bottom of logo cloud section
 
 ## 📝 To-Do List (Next Actions)
 - [ ] Add more shadcn/ui components (Dialog, Dropdown, etc.)
@@ -62,3 +64,6 @@
 - Updated Footer component: changed amber accents to blue, updated contact icons and section headings
 - Updated Features component: replaced amber gradients with blue-only gradients for cards and decorators
 - Updated Services component: unified color scheme with blue gradients for consistency
+- Added white-to-transparent gradient overlay to Features section for enhanced visual depth
+- Added white-to-transparent gradient overlay to FAQs section creating subtle foggy fade effect
+- Added white-to-blue gradient at bottom of logo cloud section (white → blue-50 → blue-100)

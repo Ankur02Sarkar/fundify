@@ -29,7 +29,7 @@ export function Faqs() {
     }
 
     return (
-        <section className="py-16 md:py-32 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-950/10 dark:via-background dark:to-blue-900/10">
+        <section className="py-16 md:py-32 bg-gradient-to-br from-blue-100 via-white to-blue-100 dark:from-blue-950/10 dark:via-background dark:to-blue-900/10">
             <div className="mx-auto max-w-5xl px-6">
                 <motion.div 
                     className="text-center"
