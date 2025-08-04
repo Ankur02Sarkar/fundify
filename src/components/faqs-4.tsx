@@ -29,7 +29,7 @@ export function Faqs() {
     }
 
     return (
-        <section className="py-16 md:py-32 bg-gradient-to-br from-white-50 via-amber-50 to-blue-50 dark:from-amber-950/10 dark:via-background dark:to-blue-950/10">
+        <section className="py-16 md:py-32 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-950/10 dark:via-background dark:to-blue-900/10">
             <div className="mx-auto max-w-5xl px-6">
                 <motion.div 
                     className="text-center"
@@ -38,10 +38,10 @@ export function Faqs() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-amber-600 text-white border-0" variant="outline">
+                    <Badge className="mb-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white border-0" variant="outline">
                         {t('faqs.badge')}
                     </Badge>
-                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl bg-gradient-to-r from-blue-600 via-blue-800 to-amber-600 bg-clip-text text-transparent">
+                    <h2 className="text-balance text-4xl font-semibold lg:text-5xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-800 bg-clip-text text-transparent">
                         {t('faqs.title')}
                     </h2>
                     <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
@@ -69,8 +69,8 @@ export function Faqs() {
                         </motion.div>
                         
                         <motion.div variants={itemVariants}>
-                            <AccordionItem value="item-2" className="border border-amber-100 dark:border-amber-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-amber-50/30 dark:from-background dark:to-amber-950/10">
-                                <AccordionTrigger className="text-left hover:text-amber-600 transition-colors">
+                            <AccordionItem value="item-2" className="border border-blue-100 dark:border-blue-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-blue-50/30 dark:from-background dark:to-blue-950/10">
+                                <AccordionTrigger className="text-left hover:text-blue-600 transition-colors">
                                     {t('faqs.questions.fees.question')}
                                 </AccordionTrigger>
                                 <AccordionContent className="text-muted-foreground leading-relaxed">
@@ -91,8 +91,8 @@ export function Faqs() {
                         </motion.div>
                         
                         <motion.div variants={itemVariants}>
-                            <AccordionItem value="item-4" className="border border-amber-100 dark:border-amber-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-amber-50/30 dark:from-background dark:to-amber-950/10">
-                                <AccordionTrigger className="text-left hover:text-amber-600 transition-colors">
+                            <AccordionItem value="item-4" className="border border-blue-100 dark:border-blue-900/20 rounded-lg px-6 bg-gradient-to-r from-white to-blue-50/30 dark:from-background dark:to-blue-950/10">
+                                <AccordionTrigger className="text-left hover:text-blue-600 transition-colors">
                                     {t('faqs.questions.integration.question')}
                                 </AccordionTrigger>
                                 <AccordionContent className="text-muted-foreground leading-relaxed">

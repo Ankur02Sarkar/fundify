@@ -31,7 +31,7 @@ export default function Footer() {
     }
 
     return (
-        <footer className="bg-gradient-to-br from-blue-950 via-blue-900 to-amber-900 text-white relative overflow-hidden">
+        <footer className="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px]" />
             
@@ -47,7 +47,7 @@ export default function Footer() {
                     <motion.div variants={itemVariants} className="lg:col-span-2">
                         <div className="flex items-center mb-4">
                             <Logo className="text-white" uniColor />
-                            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-amber-200 bg-clip-text text-transparent">
+                            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                                 Fundify
                             </span>
                         </div>
@@ -56,15 +56,15 @@ export default function Footer() {
                         </p>
                         <div className="space-y-3">
                             <div className="flex items-center text-blue-100">
-                                <Mail className="size-4 mr-3 text-amber-400" />
+                                <Mail className="size-4 mr-3 text-blue-400" />
                                 <span className="text-sm">contact@fundify.ae</span>
                             </div>
                             <div className="flex items-center text-blue-100">
-                                <Phone className="size-4 mr-3 text-amber-400" />
+                                <Phone className="size-4 mr-3 text-blue-400" />
                                 <span className="text-sm">+971 4 123 4567</span>
                             </div>
                             <div className="flex items-center text-blue-100">
-                                <MapPin className="size-4 mr-3 text-amber-400" />
+                                <MapPin className="size-4 mr-3 text-blue-400" />
                                 <span className="text-sm">Dubai, United Arab Emirates</span>
                             </div>
                         </div>
@@ -72,7 +72,7 @@ export default function Footer() {
 
                     {/* Services */}
                     <motion.div variants={itemVariants}>
-                        <h3 className="text-lg font-semibold mb-4 text-amber-200">{t('footer.services.title')}</h3>
+                        <h3 className="text-lg font-semibold mb-4 text-blue-200">{t('footer.services.title')}</h3>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
@@ -99,7 +99,7 @@ export default function Footer() {
 
                     {/* Company */}
                     <motion.div variants={itemVariants}>
-                        <h3 className="text-lg font-semibold mb-4 text-amber-200">{t('footer.company.title')}</h3>
+                        <h3 className="text-lg font-semibold mb-4 text-blue-200">{t('footer.company.title')}</h3>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="#" className="text-blue-100 hover:text-white transition-colors duration-200 text-sm">
