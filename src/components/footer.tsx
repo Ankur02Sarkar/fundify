@@ -46,8 +46,8 @@ export default function Footer() {
                     {/* Company Info */}
                     <motion.div variants={itemVariants} className="lg:col-span-2">
                         <div className="flex items-center mb-4">
-                            <Logo className="text-white" uniColor />
-                            <span className="ml-3 text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                            {/* <Logo className="text-white" uniColor /> */}
+                            <span className="text-4xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                                 Fundify
                             </span>
                         </div>
