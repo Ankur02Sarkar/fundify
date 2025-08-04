@@ -2,15 +2,25 @@
 
 import { useState } from 'react'
 import { motion } from 'motion/react'
+import GoogleMapReact from 'google-map-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
 
+// Dubai coordinates
 const DUBAI_COORDINATES = {
-  lat: 25.2048,
-  lng: 55.2708
+  lat: 25.0943,
+  lng: 55.1560
 }
+
+// Map marker component
+const MapMarker = ({ lat, lng }: { lat: number; lng: number }) => (
+  <div className="relative">
+    <div className="w-6 h-6 bg-primary rounded-full border-2 border-white shadow-lg animate-pulse" />
+    <div className="absolute -top-1 -left-1 w-8 h-8 bg-primary/20 rounded-full animate-ping" />
+  </div>
+)
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -73,52 +83,104 @@ export default function ContactContent() {
       animate="visible"
       className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2"
     >
-      {/* Embedded Google Maps */}
+      {/* Google Maps with React */}
       <motion.div variants={mapVariants} className="lg:col-span-1">
-        <div className="rounded-2xl overflow-hidden shadow-lg border border-primary/20 h-full min-h-[600px]">
-          <div className="relative h-full">
-            {/* Map Header */}
-            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-background/95 to-transparent p-4">
-              <h3 className="text-lg font-semibold text-foreground">Our Location</h3>
-              <p className="text-sm text-muted-foreground">Dubai Internet City, UAE</p>
-            </div>
-            
-            {/* Embedded Google Maps */}
-            <iframe
-              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.2647!2d${DUBAI_COORDINATES.lng}!3d${DUBAI_COORDINATES.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai%20Internet%20City!5e0!3m2!1sen!2sae!4v1635000000000!5m2!1sen!2sae`}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="rounded-2xl"
-            />
-            
-            {/* Contact Info Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 to-transparent p-4">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <Mail className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">support@fundify.com</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">+971 4 123 4567</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="h-4 w-4 text-primary" />
-                  <span className="text-muted-foreground">Dubai Internet City, Dubai, UAE</span>
-                </div>
+        <div className="relative h-full min-h-[600px] overflow-hidden">
+          {/* Google Map */}
+          <div className="h-full w-full">
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ''
+              }}
+              defaultCenter={DUBAI_COORDINATES}
+              defaultZoom={15}
+              options={{
+                styles: [
+                  {
+                    featureType: 'all',
+                    elementType: 'geometry.fill',
+                    stylers: [{ color: '#f5f5f5' }]
+                  },
+                  {
+                    featureType: 'water',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#e9e9e9' }]
+                  },
+                  {
+                    featureType: 'road',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#ffffff' }]
+                  }
+                ],
+                disableDefaultUI: true,
+                zoomControl: true,
+                scrollwheel: true
+              }}
+            >
+              <MapMarker lat={DUBAI_COORDINATES.lat} lng={DUBAI_COORDINATES.lng} />
+            </GoogleMapReact>
+          </div>
+          
+          {/* Top Right Contact Card */}
+          <motion.div 
+            className="absolute top-6 right-6 bg-white shadow-lg p-4 min-w-[200px]"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
+                <Phone className="h-4 w-4 text-white" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-900">Phone:</p>
+                <p className="text-sm text-gray-600">+971 4 123 4567</p>
               </div>
             </div>
+          </motion.div>
+          
+          {/* Bottom Left Contact Cards */}
+          <div className="absolute bottom-6 left-6 space-y-3">
+            <motion.div 
+              className="bg-white shadow-lg p-4 min-w-[250px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
+                  <MapPin className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Location:</p>
+                  <p className="text-sm text-gray-600">Dubai Internet City, Dubai, UAE</p>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-white shadow-lg p-4 min-w-[250px]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
+                  <Mail className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-gray-900">Email:</p>
+                  <p className="text-sm text-gray-600">contact@fundify.com</p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
       
       {/* Contact Form */}
       <motion.div variants={itemVariants} className="lg:col-span-1">
-        <div className="rounded-2xl border bg-card/50 backdrop-blur-sm p-8 shadow-lg h-full">
+        <div className="border bg-card/50 backdrop-blur-sm p-8 shadow-lg h-full">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-foreground mb-2">Get in Touch</h2>
             <p className="text-muted-foreground">
