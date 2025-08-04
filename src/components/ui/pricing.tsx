@@ -8,9 +8,9 @@ import {
 	TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { CheckCircleIcon, StarIcon } from 'lucide-react';
+import { CheckCircleIcon, StarIcon, TrendingUpIcon } from 'lucide-react';
 import Link from 'next/link';
-import { motion, Transition } from 'framer-motion';
+import { motion, type Transition } from 'framer-motion';
 
 type FREQUENCY = 'monthly' | 'yearly';
 const frequencies: FREQUENCY[] = ['monthly', 'yearly'];
@@ -57,8 +57,13 @@ export function PricingSection({
 			)}
 			{...props}
 		>
-			<div className="mx-auto max-w-xl space-y-2">
-				<h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
+			<motion.div 
+				className="mx-auto max-w-xl space-y-2"
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6 }}
+			>
+				<h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl bg-gradient-to-r from-blue-600 via-blue-500 to-blue-800 bg-clip-text text-transparent">
 					{heading}
 				</h2>
 				{description && (
@@ -66,16 +71,34 @@ export function PricingSection({
 						{description}
 					</p>
 				)}
-			</div>
-			<PricingFrequencyToggle
-				frequency={frequency}
-				setFrequency={setFrequency}
-			/>
-			<div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
-				{plans.map((plan) => (
-					<PricingCard plan={plan} key={plan.name} frequency={frequency} />
+			</motion.div>
+			<motion.div
+				initial={{ opacity: 0, scale: 0.9 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.5, delay: 0.2 }}
+			>
+				<PricingFrequencyToggle
+					frequency={frequency}
+					setFrequency={setFrequency}
+				/>
+			</motion.div>
+			<motion.div 
+				className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 md:grid-cols-3"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.6, delay: 0.4 }}
+			>
+				{plans.map((plan, index) => (
+					<motion.div
+						key={plan.name}
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+					>
+						<PricingCard plan={plan} frequency={frequency} />
+					</motion.div>
 				))}
-			</div>
+			</motion.div>
 		</div>
 	);
 }
@@ -91,30 +114,33 @@ export function PricingFrequencyToggle({
 	...props
 }: PricingFrequencyToggleProps) {
 	return (
-		<div
-			className={cn(
-				'bg-muted/30 mx-auto flex w-fit rounded-full border p-1',
+			<div
+				className={cn(
+				'bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 mx-auto flex w-fit rounded-full border border-blue-200 dark:border-blue-800 p-1 shadow-lg',
 				props.className,
 			)}
-			{...props}
-		>
-			{frequencies.map((freq) => (
-				<button
-					onClick={() => setFrequency(freq)}
-					className="relative px-4 py-1 text-sm capitalize"
-				>
-					<span className="relative z-10">{freq}</span>
-					{frequency === freq && (
-						<motion.span
-							layoutId="frequency"
-							transition={{ type: 'spring', duration: 0.4 }}
-							className="bg-foreground absolute inset-0 z-10 rounded-full mix-blend-difference"
-						/>
-					)}
-				</button>
-			))}
-		</div>
-	);
+				{...props}
+			>
+				{frequencies.map((freq) => (
+					<motion.button
+						key={freq}
+						onClick={() => setFrequency(freq)}
+						className="relative px-6 py-2 text-sm font-medium capitalize transition-colors"
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						<span className="relative z-10">{freq}</span>
+						{frequency === freq && (
+							<motion.span
+								layoutId="frequency"
+								transition={{ type: 'spring', duration: 0.4, bounce: 0.2 }}
+								className="bg-gradient-to-r from-blue-600 to-blue-500 absolute inset-0 z-0 rounded-full shadow-md"
+							/>
+						)}
+					</motion.button>
+				))}
+			</div>
+		);
 }
 
 type PricingCardProps = React.ComponentProps<'div'> & {
@@ -128,39 +154,63 @@ export function PricingCard({
 	frequency = frequencies[0],
 	...props
 }: PricingCardProps) {
+	// Extract only safe props for motion.div
+	const { 
+		onAnimationStart, onAnimationEnd, onAnimationIteration,
+		onDrag, onDragEnd, onDragStart, onDrop,
+		onMouseDown, onMouseUp, onMouseMove,
+		onTouchStart, onTouchEnd, onTouchMove,
+		...safeProps 
+	} = props;
+	
 	return (
-		<div
+		<motion.div
 			key={plan.name}
 			className={cn(
-				'relative flex w-full flex-col rounded-lg border',
-				className,
-			)}
-			{...props}
+					'relative flex w-full flex-col rounded-xl border border-blue-200 dark:border-blue-800 bg-gradient-to-br from-white to-blue-50 dark:from-blue-950 dark:to-slate-950 shadow-lg hover:shadow-xl transition-all duration-300',
+					plan.highlighted && 'border-blue-300 dark:border-blue-700 shadow-blue-100 dark:shadow-blue-900/20 ring-2 ring-blue-200 dark:ring-blue-800',
+					className,
+				)}
+			whileHover={{ y: -5, scale: 1.02 }}
+			transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+			style={safeProps.style}
+			id={safeProps.id}
 		>
 			{plan.highlighted && (
 				<BorderTrail
 					style={{
 						boxShadow:
-							'0px 0px 60px 30px rgb(255 255 255 / 50%), 0 0 100px 60px rgb(0 0 0 / 50%), 0 0 140px 90px rgb(0 0 0 / 50%)',
+							'0px 0px 60px 30px rgb(59 130 246 / 15%), 0 0 100px 60px rgb(245 158 11 / 10%)',
 					}}
 					size={100}
 				/>
 			)}
 			<div
 				className={cn(
-					'bg-muted/20 rounded-t-lg border-b p-4',
-					plan.highlighted && 'bg-muted/40',
-				)}
+				'bg-gradient-to-r from-blue-50 to-white dark:from-blue-900 dark:to-slate-900 rounded-t-xl border-b border-blue-200 dark:border-blue-700 p-6',
+				plan.highlighted && 'from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 border-blue-200 dark:border-blue-800',
+			)}
 			>
-				<div className="absolute top-2 right-2 z-10 flex items-center gap-2">
+				<div className="absolute top-3 right-3 z-10 flex items-center gap-2">
 					{plan.highlighted && (
-						<p className="bg-background flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs">
+						<motion.div 
+							className="bg-gradient-to-r from-blue-600 to-blue-500 text-white flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium shadow-lg"
+							initial={{ scale: 0, rotate: -10 }}
+							animate={{ scale: 1, rotate: 0 }}
+							transition={{ type: 'spring', delay: 0.5 }}
+						>
 							<StarIcon className="h-3 w-3 fill-current" />
-							Popular
-						</p>
+							Most Popular
+						</motion.div>
 					)}
-					{frequency === 'yearly' && (
-						<p className="bg-primary text-primary-foreground flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs">
+					{frequency === 'yearly' && plan.name !== 'Free' && (
+						<motion.div 
+							className="bg-gradient-to-r from-blue-500 to-blue-600 text-white flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium shadow-lg"
+							initial={{ scale: 0, x: 20 }}
+							animate={{ scale: 1, x: 0 }}
+							transition={{ type: 'spring', delay: 0.7 }}
+						>
+							<TrendingUpIcon className="h-3 w-3" />
 							{Math.round(
 								((plan.price.monthly * 12 - plan.price.yearly) /
 									plan.price.monthly /
@@ -168,37 +218,51 @@ export function PricingCard({
 									100,
 							)}
 							% off
-						</p>
+						</motion.div>
 					)}
 				</div>
 
-				<div className="text-lg font-medium">{plan.name}</div>
-				<p className="text-muted-foreground text-sm font-normal">{plan.info}</p>
-				<h3 className="mt-2 flex items-end gap-1">
-					<span className="text-3xl font-bold">${plan.price[frequency]}</span>
-					<span className="text-muted-foreground">
+				<div className="text-xl font-bold text-slate-900 dark:text-slate-100">{plan.name}</div>
+				<p className="text-slate-600 dark:text-slate-400 text-sm font-medium mt-1">{plan.info}</p>
+				<motion.h3 
+					className="mt-4 flex items-end gap-1"
+					initial={{ scale: 0.8, opacity: 0 }}
+					animate={{ scale: 1, opacity: 1 }}
+					transition={{ delay: 0.3 }}
+				>
+					<span className="text-4xl font-bold bg-gradient-to-r from-blue-900 to-blue-600 dark:from-blue-100 dark:to-blue-300 bg-clip-text text-transparent">
+						${plan.price[frequency]}
+					</span>
+					<span className="text-blue-600 dark:text-blue-400 text-sm mb-1">
 						{plan.name !== 'Free'
 							? '/' + (frequency === 'monthly' ? 'month' : 'year')
 							: ''}
 					</span>
-				</h3>
+				</motion.h3>
 			</div>
 			<div
 				className={cn(
-					'text-muted-foreground space-y-4 px-4 py-6 text-sm',
-					plan.highlighted && 'bg-muted/10',
-				)}
+				'space-y-4 px-6 py-6 text-sm',
+				plan.highlighted && 'bg-gradient-to-b from-blue-50/50 to-blue-100/50 dark:from-blue-950/20 dark:to-blue-900/20',
+			)}
 			>
 				{plan.features.map((feature, index) => (
-					<div key={index} className="flex items-center gap-2">
-						<CheckCircleIcon className="text-foreground h-4 w-4" />
+					<motion.div 
+						key={index} 
+						className="flex items-center gap-3"
+						initial={{ opacity: 0, x: -10 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ delay: 0.4 + index * 0.1 }}
+					>
+						<CheckCircleIcon className="h-5 w-5 text-blue-600 flex-shrink-0" />
 						<TooltipProvider>
 							<Tooltip delayDuration={0}>
 								<TooltipTrigger asChild>
 									<p
 										className={cn(
+											'text-blue-900 dark:text-blue-100 font-medium',
 											feature.tooltip &&
-												'cursor-pointer border-b border-dashed',
+												'cursor-pointer border-b border-dashed border-blue-400',
 										)}
 									>
 										{feature.text}
@@ -211,24 +275,34 @@ export function PricingCard({
 								)}
 							</Tooltip>
 						</TooltipProvider>
-					</div>
+					</motion.div>
 				))}
 			</div>
 			<div
 				className={cn(
-					'mt-auto w-full border-t p-3',
-					plan.highlighted && 'bg-muted/40',
-				)}
+				'mt-auto w-full border-t border-blue-200 dark:border-blue-700 p-6',
+				plan.highlighted && 'bg-gradient-to-r from-blue-50/50 to-blue-100/50 dark:from-blue-950/20 dark:to-blue-900/20',
+			)}
 			>
-				<Button
-					className="w-full"
-					variant={plan.highlighted ? 'default' : 'outline'}
-					asChild
+				<motion.div
+					whileHover={{ scale: 1.02 }}
+					whileTap={{ scale: 0.98 }}
 				>
-					<Link href={plan.btn.href}>{plan.btn.text}</Link>
-				</Button>
+					<Button
+						className={cn(
+						'w-full font-semibold transition-all duration-200',
+						plan.highlighted 
+							? 'bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white shadow-lg hover:shadow-xl'
+							: 'border-2 border-blue-300 dark:border-blue-600 hover:border-blue-400 dark:hover:border-blue-500 text-blue-700 dark:text-blue-300'
+					)}
+						variant={plan.highlighted ? 'default' : 'outline'}
+						asChild
+					>
+						<Link href={plan.btn.href}>{plan.btn.text}</Link>
+					</Button>
+				</motion.div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
@@ -250,7 +324,7 @@ export function BorderTrail({
   onAnimationComplete,
   style,
 }: BorderTrailProps) {
-  const BASE_TRANSITION = {
+  const BASE_TRANSITION: Transition = {
     repeat: Infinity,
     duration: 5,
     ease: 'linear',

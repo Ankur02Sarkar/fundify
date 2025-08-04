@@ -6,8 +6,8 @@ export default function PricingComp() {
 		<div className="flex min-h-screen items-center justify-center py-12">
 			<PricingSection
 				plans={PLANS}
-				heading="Plans that Scale with You"
-				description="Whether you're just starting out or growing fast, our flexible pricing has you covered — with no hidden costs."
+				heading="AI-Powered Finance Solutions for Every Business"
+				description="From startups to enterprises, our intelligent finance management and funding platform grows with your business. Transparent pricing, powerful AI, unlimited potential."
 			/>
 		</div>
 	);
@@ -15,89 +15,93 @@ export default function PricingComp() {
 
 const PLANS = [
 	{
-		id: 'basic',
-		name: 'Basic',
-		info: 'For most individuals',
+		id: 'starter',
+		name: 'Starter',
+		info: 'For individuals & small businesses',
 		price: {
-			monthly: 7,
-			yearly: Math.round(7 * 12 * (1 - 0.12)),
+			monthly: 29,
+			yearly: Math.round(29 * 12 * (1 - 0.15)),
 		},
 		features: [
-			{ text: 'Up to 3 Blog posts', limit: '100 tags' },
-			{ text: 'Up to 3 Transcriptions' },
-			{ text: 'Up to 3 Posts stored' },
+			{ text: 'Basic financial dashboard', tooltip: 'Track income, expenses, and cash flow' },
+			{ text: 'Up to 3 loan applications' },
+			{ text: 'AI expense categorization' },
 			{
-				text: 'Markdown support',
-				tooltip: 'Export content in Markdown format',
+				text: 'Basic fund matching',
+				tooltip: 'Get matched with suitable funding options',
 			},
 			{
-				text: 'Community support',
-				tooltip: 'Get answers your questions on discord',
+				text: 'Email support',
+				tooltip: 'Get help via email within 24 hours',
 			},
-			{
-				text: 'AI powered suggestions',
-				tooltip: 'Get up to 100 AI powered suggestions',
-			},
+			{ text: 'Mobile app access' },
 		],
 		btn: {
-			text: 'Start Your Free Trial',
-			href: '#',
+			text: 'Start Free Trial',
+			href: '/signup?plan=starter',
 		},
 	},
 	{
 		highlighted: true,
-		id: 'pro',
-		name: 'Pro',
-		info: 'For small businesses',
+		id: 'professional',
+		name: 'Professional',
+		info: 'For growing businesses',
 		price: {
-			monthly: 17.99,
-			yearly: Math.round(17.99 * 12 * (1 - 0.12)),
+			monthly: 79,
+			yearly: Math.round(79 * 12 * (1 - 0.20)),
 		},
 		features: [
-			{ text: 'Up to 500 Blog Posts', limit: '500 tags' },
-			{ text: 'Up to 500 Transcriptions' },
-			{ text: 'Up to 500 Posts stored' },
+			{ text: 'Advanced financial analytics', tooltip: 'Detailed reports and forecasting' },
+			{ text: 'Unlimited loan applications' },
+			{ text: 'AI-powered credit scoring' },
 			{
-				text: 'Unlimited Markdown support',
-				tooltip: 'Export content in Markdown format',
+				text: 'Premium fund matching',
+				tooltip: 'Access to exclusive funding opportunities',
 			},
-			{ text: 'SEO optimization tools' },
-			{ text: 'Priority support', tooltip: 'Get 24/7 chat support' },
 			{
-				text: 'AI powered suggestions',
-				tooltip: 'Get up to 500 AI powered suggestions',
+				text: 'Automated loan management',
+				tooltip: 'Track payments, interest, and schedules automatically',
 			},
+			{ text: 'Priority support', tooltip: 'Phone and chat support' },
+			{
+				text: 'API access',
+				tooltip: 'Integrate with your existing systems',
+			},
+			{ text: 'Custom reporting' },
 		],
 		btn: {
-			text: 'Get started',
-			href: '#',
+			text: 'Get Started',
+			href: '/signup?plan=professional',
 		},
 	},
 	{
-		name: 'Business',
+		id: 'enterprise',
+		name: 'Enterprise',
 		info: 'For large organizations',
 		price: {
-			monthly: 69.99,
-			yearly: Math.round(49.99 * 12 * (1 - 0.12)),
+			monthly: 199,
+			yearly: Math.round(199 * 12 * (1 - 0.25)),
 		},
 		features: [
-			{ text: 'Unlimited Blog Posts' },
-			{ text: 'Unlimited Transcriptions' },
-			{ text: 'Unlimited Posts stored' },
-			{ text: 'Unlimited Markdown support' },
+			{ text: 'White-label solution' },
+			{ text: 'Unlimited everything' },
+			{ text: 'Advanced AI risk assessment' },
+			{ text: 'Multi-entity management' },
 			{
-				text: 'SEO optimization tools',
-				tooltip: 'Advanced SEO optimization tools',
+				text: 'Custom integrations',
+				tooltip: 'Tailored integrations with your systems',
 			},
-			{ text: 'Priority support', tooltip: 'Get 24/7 chat support' },
+			{ text: 'Dedicated account manager' },
 			{
-				text: 'AI powered suggestions',
-				tooltip: 'Get up to 500 AI powered suggestions',
+				text: 'Advanced compliance tools',
+				tooltip: 'Meet regulatory requirements with ease',
 			},
+			{ text: '24/7 premium support' },
+			{ text: 'Custom training & onboarding' },
 		],
 		btn: {
-			text: 'Contact team',
-			href: '#',
+			text: 'Contact Sales',
+			href: '/contact?plan=enterprise',
 		},
 	},
 ];
