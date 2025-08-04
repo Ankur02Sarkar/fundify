@@ -193,7 +193,7 @@ const resources = {
   ar: {
     translation: {
       nav: {
-        features: "الميزات",
+        services: "الميزات",
         pricing: "التسعير",
         about: "حول",
         contact: "اتصل بنا",
