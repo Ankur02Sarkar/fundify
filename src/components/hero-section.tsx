@@ -116,7 +116,7 @@ export default function HeroSection() {
                   speedSegment={0.3}
                   delay={0.5}
                   as="p"
-                  className="mx-auto mt-6 sm:mt-8 max-w-2xl text-balance text-base sm:text-lg"
+                  className="mt-6 sm:mt-8 max-w-2xl text-balance text-base sm:text-lg"
                 >
                   {t('hero.subtitle')}
                 </TextEffect>

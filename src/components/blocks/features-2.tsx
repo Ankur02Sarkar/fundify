@@ -29,7 +29,7 @@ export function Features() {
     }
 
     return (
-        <section className="py-16 md:py-32 bg-gradient-to-br from-blue-50 via-white to-amber-50 dark:from-blue-950/20 dark:via-background dark:to-amber-950/20">
+        <section className="py-16 md:py-32 bg-gradient-to-br from-white-50 via-white to-amber-50 dark:from-blue-950/20 dark:via-background dark:to-amber-950/20">
             <div className="@container mx-auto max-w-5xl px-6">
                 <motion.div 
                     className="text-center"

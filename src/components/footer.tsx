@@ -179,7 +179,7 @@ export default function Footer() {
                                 </Link>
                             </div>
                             <p className="text-blue-200 text-sm">
-                                © 2024 Fundify. {t('footer.rights')}
+                                © 2025 Fundify. {t('footer.rights')}
                             </p>
                         </div>
                     </div>
