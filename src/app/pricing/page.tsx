@@ -1,3 +1,4 @@
+import PricingComp from '@/components/PricingComp'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -18,26 +19,7 @@ export default function PricingPage() {
           </p>
         </div>
         
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {/* Pricing cards will be implemented here */}
-          <div className="rounded-lg border bg-card p-8 text-center">
-            <h3 className="text-xl font-semibold">Starter</h3>
-            <p className="mt-4 text-3xl font-bold">Free</p>
-            <p className="mt-2 text-muted-foreground">Perfect for getting started</p>
-          </div>
-          
-          <div className="rounded-lg border bg-card p-8 text-center">
-            <h3 className="text-xl font-semibold">Pro</h3>
-            <p className="mt-4 text-3xl font-bold">$29/mo</p>
-            <p className="mt-2 text-muted-foreground">For growing campaigns</p>
-          </div>
-          
-          <div className="rounded-lg border bg-card p-8 text-center">
-            <h3 className="text-xl font-semibold">Enterprise</h3>
-            <p className="mt-4 text-3xl font-bold">Custom</p>
-            <p className="mt-2 text-muted-foreground">For large organizations</p>
-          </div>
-        </div>
+        <PricingComp />
       </div>
     </div>
   )
