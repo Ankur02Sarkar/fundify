@@ -24,9 +24,9 @@ export const HeroHeader = () => {
     const menuItems = [
         { name: t('nav.services'), href: '/services' },
         // { name: t('nav.solution'), href: '#link' },
-        { name: t('nav.pricing'), href: '#link' },
-        { name: t('nav.about'), href: '#link' },
-        { name: t('nav.contact'), href: '#link' },
+        { name: t('nav.pricing'), href: '/pricing' },
+        { name: t('nav.about'), href: '/about' },
+        { name: t('nav.contact'), href: '/contact' },
     ]
 
     const changeLanguage = (lng: string) => {
@@ -120,7 +120,7 @@ export const HeroHeader = () => {
                                     variant="outline"
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link href="#">
+                                    <Link href="/login">
                                         <span>{t('nav.login')}</span>
                                     </Link>
                                 </Button>
@@ -128,7 +128,7 @@ export const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
-                                    <Link href="#">
+                                    <Link href="/signup">
                                         <span>{t('nav.signup')}</span>
                                     </Link>
                                 </Button>
@@ -136,7 +136,7 @@ export const HeroHeader = () => {
                                     asChild
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                                    <Link href="#">
+                                    <Link href="/get-started">
                                         <span>{t('nav.getStarted')}</span>
                                     </Link>
                                 </Button>
