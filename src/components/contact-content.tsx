@@ -95,6 +95,18 @@ export default function ContactContent() {
               defaultCenter={DUBAI_COORDINATES}
               defaultZoom={15}
               options={{
+                mapTypeId: 'roadmap', // Default to roadmap
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                  style: 1, // HORIZONTAL_BAR
+                  position: 3, // TOP_RIGHT
+                  mapTypeIds: [
+                    'roadmap',
+                    'satellite',
+                    'hybrid',
+                    'terrain'
+                  ]
+                },
                 styles: [
                   {
                     featureType: 'all',
@@ -110,20 +122,41 @@ export default function ContactContent() {
                     featureType: 'road',
                     elementType: 'geometry',
                     stylers: [{ color: '#ffffff' }]
+                  },
+                  {
+                    featureType: 'landscape',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#f8f8f8' }]
+                  },
+                  {
+                    featureType: 'poi',
+                    elementType: 'geometry',
+                    stylers: [{ color: '#eeeeee' }]
                   }
                 ],
-                disableDefaultUI: true,
                 zoomControl: true,
-                scrollwheel: true
+                zoomControlOptions: {
+                  position: 7 // RIGHT_BOTTOM
+                },
+                streetViewControl: true,
+                streetViewControlOptions: {
+                  position: 7 // RIGHT_BOTTOM
+                },
+                fullscreenControl: true,
+                fullscreenControlOptions: {
+                  position: 6 // RIGHT_TOP
+                },
+                scrollwheel: true,
+                gestureHandling: 'cooperative'
               }}
             >
               <MapMarker lat={DUBAI_COORDINATES.lat} lng={DUBAI_COORDINATES.lng} />
             </GoogleMapReact>
           </div>
           
-          {/* Top Right Contact Card */}
+          {/* Top Left Contact Card */}
           <motion.div 
-            className="absolute top-6 right-6 bg-white shadow-lg p-4 min-w-[200px]"
+            className="absolute top-6 left-6 bg-white shadow-lg p-4 min-w-[200px]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
@@ -139,8 +172,8 @@ export default function ContactContent() {
             </div>
           </motion.div>
           
-          {/* Bottom Left Contact Cards */}
-          <div className="absolute bottom-6 left-6 space-y-3">
+          {/* Bottom Right Contact Cards */}
+          <div className="absolute bottom-6 right-6 space-y-3">
             <motion.div 
               className="bg-white shadow-lg p-4 min-w-[250px]"
               initial={{ opacity: 0, y: 20 }}
