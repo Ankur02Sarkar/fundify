@@ -81,7 +81,7 @@ export default function ContactContent() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2"
+      className="mt-16 grid p-8 grid-cols-1 gap-12 lg:grid-cols-2"
     >
       {/* Google Maps with React */}
       <motion.div variants={mapVariants} className="lg:col-span-1">
@@ -213,7 +213,7 @@ export default function ContactContent() {
       
       {/* Contact Form */}
       <motion.div variants={itemVariants} className="lg:col-span-1">
-        <div className="border bg-card/50 backdrop-blur-sm p-8 shadow-lg h-full">
+        <div className="border rounded-2xl bg-card/50 backdrop-blur-sm p-8 shadow-lg h-full">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-foreground mb-2">Get in Touch</h2>
             <p className="text-muted-foreground">
