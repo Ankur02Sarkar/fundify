@@ -51,6 +51,7 @@ const PLANS = [
 			yearly: Math.round(79 * 12 * (1 - 0.20)),
 		},
 		features: [
+			{ text: 'Everything in Starter, plus:' },
 			{ text: 'Advanced financial analytics', tooltip: 'Detailed reports and forecasting' },
 			{ text: 'Unlimited loan applications' },
 			{ text: 'AI-powered credit scoring' },
@@ -83,8 +84,8 @@ const PLANS = [
 			yearly: Math.round(199 * 12 * (1 - 0.25)),
 		},
 		features: [
+			{ text: 'Everything in Professional, plus:' },
 			{ text: 'White-label solution' },
-			{ text: 'Unlimited everything' },
 			{ text: 'Advanced AI risk assessment' },
 			{ text: 'Multi-entity management' },
 			{
