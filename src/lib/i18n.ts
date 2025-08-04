@@ -164,6 +164,212 @@ const resources = {
           },
         },
       },
+      about: {
+        title: "About Us - Fundify",
+        description: "Learn about Fundify's mission to revolutionize fundraising",
+        hero: {
+          title: "About Fundify",
+          subtitle: "Revolutionizing fundraising for the digital age",
+          description: "We're on a mission to make fundraising accessible, transparent, and effective for everyone."
+        },
+        mission: {
+          title: "Our Mission",
+          description: "To democratize fundraising and empower individuals and organizations to achieve their goals through innovative technology and community support."
+        },
+        vision: {
+          title: "Our Vision",
+          description: "A world where every great idea has the opportunity to become reality through accessible and transparent fundraising."
+        },
+        values: {
+          title: "Our Values",
+          transparency: {
+            title: "Transparency",
+            description: "We believe in complete transparency in all fundraising activities."
+          },
+          innovation: {
+            title: "Innovation",
+            description: "We continuously innovate to provide the best fundraising experience."
+          },
+          community: {
+            title: "Community",
+            description: "We foster a supportive community of creators and backers."
+          }
+        }
+      },
+      contact: {
+        title: "Contact Us - Fundify",
+        description: "Get in touch with the Fundify team",
+        hero: {
+          title: "Contact Us",
+          subtitle: "Have questions? We'd love to hear from you."
+        },
+        form: {
+          name: "Full Name",
+          email: "Email Address",
+          subject: "Subject",
+          message: "Message",
+          submit: "Send Message",
+          sending: "Sending..."
+        },
+        info: {
+          address: {
+            title: "Address",
+            value: "123 Business Bay, Dubai, UAE"
+          },
+          phone: {
+            title: "Phone",
+            value: "+971 4 123 4567"
+          },
+          email: {
+            title: "Email",
+            value: "hello@fundify.ae"
+          },
+          hours: {
+            title: "Business Hours",
+            value: "Sunday - Thursday: 9:00 AM - 6:00 PM"
+          }
+        }
+      },
+      getStarted: {
+        title: "Get Started - Fundify",
+        description: "Start your fundraising journey with Fundify",
+        hero: {
+          title: "Get Started with Fundify",
+          subtitle: "Choose how you want to begin your fundraising journey. Whether you're an individual with a dream or an organization with a mission, we have the right path for you."
+        },
+        options: {
+          individual: {
+            title: "Individual Creator",
+            description: "Perfect for personal projects, creative endeavors, and individual causes",
+            features: [
+              "Easy campaign setup",
+              "Social media integration",
+              "Personal fundraising tools",
+              "Community support"
+            ],
+            cta: "Start as Individual"
+          },
+          organization: {
+            title: "Small Organization",
+            description: "Ideal for nonprofits, startups, and small businesses seeking funding",
+            features: [
+              "Advanced campaign management",
+              "Team collaboration tools",
+              "Analytics and reporting",
+              "Donor management system"
+            ],
+            cta: "Start as Organization",
+            badge: "Popular"
+          },
+          enterprise: {
+            title: "Enterprise",
+            description: "For large organizations with complex fundraising needs",
+            features: [
+              "Custom integrations",
+              "Dedicated support",
+              "Advanced security",
+              "White-label solutions"
+            ],
+            cta: "Contact Sales"
+          }
+        },
+        help: {
+          title: "Not sure which option is right for you?",
+          description: "Our team is here to help you choose the best path for your fundraising goals.",
+          cta: "Talk to an Expert"
+        }
+      },
+      login: {
+        title: "Login - Fundify",
+        description: "Sign in to your Fundify account",
+        hero: {
+          title: "Welcome Back",
+          subtitle: "Sign in to your Fundify account to continue"
+        },
+        form: {
+          email: "Email",
+          password: "Password",
+          rememberMe: "Remember me",
+          forgotPassword: "Forgot password?",
+          submit: "Sign In",
+          noAccount: "Don't have an account?",
+          signUp: "Sign up"
+        }
+      },
+      pricing: {
+        title: "Pricing - Fundify",
+        description: "Choose the perfect plan for your fundraising needs",
+        hero: {
+          title: "Pricing Plans",
+          subtitle: "Choose the perfect plan for your fundraising journey"
+        },
+        plans: {
+          free: {
+            title: "Free",
+            price: "$0",
+            period: "per month",
+            description: "Perfect for getting started",
+            features: [
+              "Basic campaign creation",
+              "Social media sharing",
+              "Basic analytics",
+              "Community support"
+            ],
+            cta: "Get Started"
+          },
+          pro: {
+            title: "Pro",
+            price: "$29",
+            period: "per month",
+            description: "For serious fundraisers",
+            features: [
+              "Advanced campaign tools",
+              "Custom branding",
+              "Detailed analytics",
+              "Priority support",
+              "Team collaboration"
+            ],
+            cta: "Start Pro Trial",
+            badge: "Most Popular"
+          },
+          enterprise: {
+            title: "Enterprise",
+            price: "Custom",
+            period: "pricing",
+            description: "For large organizations",
+            features: [
+              "White-label solution",
+              "Custom integrations",
+              "Dedicated support",
+              "Advanced security",
+              "Custom features"
+            ],
+            cta: "Contact Sales"
+          }
+        }
+      },
+      signup: {
+        title: "Sign Up - Fundify",
+        description: "Create your Fundify account",
+        hero: {
+          title: "Create Account",
+          subtitle: "Join Fundify and start your fundraising journey"
+        },
+        form: {
+          firstName: "First Name",
+          lastName: "Last Name",
+          email: "Email",
+          password: "Password",
+          confirmPassword: "Confirm Password",
+          terms: "I agree to the",
+          termsLink: "Terms of Service",
+          and: "and",
+          privacyLink: "Privacy Policy",
+          submit: "Create Account",
+          haveAccount: "Already have an account?",
+          signIn: "Sign in"
+        }
+      },
       footer: {
         description:
           "Empowering UAE businesses and individuals with intelligent financial management solutions. Join thousands who trust Fundify for their financial success.",
@@ -350,6 +556,212 @@ const resources = {
               "ببساطة سجل للحصول على حساب مجاني، اربط حساباتك المصرفية، وابدأ في تتبع أموالك فوراً. عملية الإعداد تستغرق أقل من 5 دقائق.",
           },
         },
+      },
+      about: {
+        title: "من نحن - فنديفاي",
+        description: "تعرف على مهمة فنديفاي لثورة في جمع التبرعات",
+        hero: {
+          title: "حول فنديفاي",
+          subtitle: "ثورة في جمع التبرعات للعصر الرقمي",
+          description: "نحن في مهمة لجعل جمع التبرعات متاحاً وشفافاً وفعالاً للجميع."
+        },
+        mission: {
+          title: "مهمتنا",
+          description: "إضفاء الطابع الديمقراطي على جمع التبرعات وتمكين الأفراد والمنظمات من تحقيق أهدافهم من خلال التكنولوجيا المبتكرة ودعم المجتمع."
+        },
+        vision: {
+          title: "رؤيتنا",
+          description: "عالم تحصل فيه كل فكرة عظيمة على فرصة لتصبح حقيقة من خلال جمع التبرعات المتاح والشفاف."
+        },
+        values: {
+          title: "قيمنا",
+          transparency: {
+            title: "الشفافية",
+            description: "نؤمن بالشفافية الكاملة في جميع أنشطة جمع التبرعات."
+          },
+          innovation: {
+            title: "الابتكار",
+            description: "نبتكر باستمرار لتوفير أفضل تجربة لجمع التبرعات."
+          },
+          community: {
+            title: "المجتمع",
+            description: "نعزز مجتمعاً داعماً من المبدعين والداعمين."
+          }
+        }
+      },
+      contact: {
+        title: "اتصل بنا - فنديفاي",
+        description: "تواصل مع فريق فنديفاي",
+        hero: {
+          title: "اتصل بنا",
+          subtitle: "لديك أسئلة؟ نحب أن نسمع منك."
+        },
+        form: {
+          name: "الاسم الكامل",
+          email: "عنوان البريد الإلكتروني",
+          subject: "الموضوع",
+          message: "الرسالة",
+          submit: "إرسال الرسالة",
+          sending: "جاري الإرسال..."
+        },
+        info: {
+          address: {
+            title: "العنوان",
+            value: "123 خليج الأعمال، دبي، الإمارات العربية المتحدة"
+          },
+          phone: {
+            title: "الهاتف",
+            value: "+971 4 123 4567"
+          },
+          email: {
+            title: "البريد الإلكتروني",
+            value: "hello@fundify.ae"
+          },
+          hours: {
+            title: "ساعات العمل",
+            value: "الأحد - الخميس: 9:00 صباحاً - 6:00 مساءً"
+          }
+        }
+      },
+      getStarted: {
+        title: "ابدأ الآن - فنديفاي",
+        description: "ابدأ رحلة جمع التبرعات مع فنديفاي",
+        hero: {
+          title: "ابدأ مع فنديفاي",
+          subtitle: "اختر كيف تريد أن تبدأ رحلة جمع التبرعات. سواء كنت فرداً لديه حلم أو منظمة لديها مهمة، لدينا المسار المناسب لك."
+        },
+        options: {
+          individual: {
+            title: "مبدع فردي",
+            description: "مثالي للمشاريع الشخصية والمساعي الإبداعية والقضايا الفردية",
+            features: [
+              "إعداد سهل للحملة",
+              "تكامل وسائل التواصل الاجتماعي",
+              "أدوات جمع التبرعات الشخصية",
+              "دعم المجتمع"
+            ],
+            cta: "ابدأ كفرد"
+          },
+          organization: {
+            title: "منظمة صغيرة",
+            description: "مثالي للمنظمات غير الربحية والشركات الناشئة والشركات الصغيرة التي تسعى للتمويل",
+            features: [
+              "إدارة متقدمة للحملات",
+              "أدوات التعاون الجماعي",
+              "التحليلات والتقارير",
+              "نظام إدارة المتبرعين"
+            ],
+            cta: "ابدأ كمنظمة",
+            badge: "الأكثر شعبية"
+          },
+          enterprise: {
+            title: "المؤسسات",
+            description: "للمنظمات الكبيرة ذات احتياجات جمع التبرعات المعقدة",
+            features: [
+              "تكاملات مخصصة",
+              "دعم مخصص",
+              "أمان متقدم",
+              "حلول العلامة البيضاء"
+            ],
+            cta: "اتصل بالمبيعات"
+          }
+        },
+        help: {
+          title: "غير متأكد من الخيار المناسب لك؟",
+          description: "فريقنا هنا لمساعدتك في اختيار أفضل مسار لأهداف جمع التبرعات الخاصة بك.",
+          cta: "تحدث مع خبير"
+        }
+      },
+      login: {
+        title: "تسجيل الدخول - فنديفاي",
+        description: "سجل الدخول إلى حساب فنديفاي الخاص بك",
+        hero: {
+          title: "مرحباً بعودتك",
+          subtitle: "سجل الدخول إلى حساب فنديفاي الخاص بك للمتابعة"
+        },
+        form: {
+          email: "البريد الإلكتروني",
+          password: "كلمة المرور",
+          rememberMe: "تذكرني",
+          forgotPassword: "نسيت كلمة المرور؟",
+          submit: "تسجيل الدخول",
+          noAccount: "ليس لديك حساب؟",
+          signUp: "سجل الآن"
+        }
+      },
+      pricing: {
+        title: "التسعير - فنديفاي",
+        description: "اختر الخطة المثالية لاحتياجات جمع التبرعات الخاصة بك",
+        hero: {
+          title: "خطط التسعير",
+          subtitle: "اختر الخطة المثالية لرحلة جمع التبرعات الخاصة بك"
+        },
+        plans: {
+          free: {
+            title: "مجاني",
+            price: "0 درهم",
+            period: "شهرياً",
+            description: "مثالي للبداية",
+            features: [
+              "إنشاء حملة أساسية",
+              "مشاركة وسائل التواصل الاجتماعي",
+              "تحليلات أساسية",
+              "دعم المجتمع"
+            ],
+            cta: "ابدأ الآن"
+          },
+          pro: {
+            title: "احترافي",
+            price: "99 درهم",
+            period: "شهرياً",
+            description: "لجامعي التبرعات الجادين",
+            features: [
+              "أدوات حملة متقدمة",
+              "علامة تجارية مخصصة",
+              "تحليلات مفصلة",
+              "دعم أولوية",
+              "تعاون الفريق"
+            ],
+            cta: "ابدأ التجربة المجانية",
+            badge: "الأكثر شعبية"
+          },
+          enterprise: {
+            title: "المؤسسات",
+            price: "تسعير",
+            period: "مخصص",
+            description: "للمنظمات الكبيرة",
+            features: [
+              "حل العلامة البيضاء",
+              "تكاملات مخصصة",
+              "دعم مخصص",
+              "أمان متقدم",
+              "ميزات مخصصة"
+            ],
+            cta: "اتصل بالمبيعات"
+          }
+        }
+      },
+      signup: {
+        title: "التسجيل - فنديفاي",
+        description: "أنشئ حساب فنديفاي الخاص بك",
+        hero: {
+          title: "إنشاء حساب",
+          subtitle: "انضم إلى فنديفاي وابدأ رحلة جمع التبرعات الخاصة بك"
+        },
+        form: {
+          firstName: "الاسم الأول",
+          lastName: "اسم العائلة",
+          email: "البريد الإلكتروني",
+          password: "كلمة المرور",
+          confirmPassword: "تأكيد كلمة المرور",
+          terms: "أوافق على",
+          termsLink: "شروط الخدمة",
+          and: "و",
+          privacyLink: "سياسة الخصوصية",
+          submit: "إنشاء حساب",
+          haveAccount: "لديك حساب بالفعل؟",
+          signIn: "سجل الدخول"
+        }
       },
       footer: {
         description:
