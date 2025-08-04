@@ -304,30 +304,77 @@ const resources = {
           subtitle: "Choose the perfect plan for your fundraising journey"
         },
         plans: {
-          free: {
-            title: "Free",
+          starter: {
+            title: "Starter",
             price: "$0",
             period: "per month",
             description: "Perfect for getting started",
             features: [
-              "Basic campaign creation",
-              "Social media sharing",
-              "Basic analytics",
-              "Community support"
+              {
+                text: "Basic financial dashboard",
+                tooltip: "Track income, expenses, and cash flow"
+              },
+              {
+                text: "Up to 3 loan applications",
+                tooltip: null
+              },
+              {
+                text: "AI expense categorization",
+                tooltip: null
+              },
+              {
+                text: "Basic fund matching",
+                tooltip: "Get matched with suitable funding options"
+              },
+              {
+                text: "Email support",
+                tooltip: "Get help via email within 24 hours"
+              },
+              {
+                text: "Mobile app access",
+                tooltip: null
+              }
             ],
             cta: "Get Started"
           },
-          pro: {
-            title: "Pro",
+          professional: {
+            title: "Professional",
             price: "$29",
             period: "per month",
             description: "For serious fundraisers",
             features: [
-              "Advanced campaign tools",
-              "Custom branding",
-              "Detailed analytics",
-              "Priority support",
-              "Team collaboration"
+              {
+                text: "Everything in Starter, plus:",
+                tooltip: null
+              },
+              {
+                text: "Advanced financial analytics",
+                tooltip: "Detailed reports and forecasting"
+              },
+              {
+                text: "Unlimited loan applications",
+                tooltip: null
+              },
+              {
+                text: "AI-powered credit scoring",
+                tooltip: null
+              },
+              {
+                text: "Premium fund matching",
+                tooltip: "Access to exclusive funding opportunities"
+              },
+              {
+                text: "Automated loan management",
+                tooltip: "Track payments, interest, and schedules automatically"
+              },
+              {
+                text: "Priority support",
+                tooltip: "Phone and chat support"
+              },
+              {
+                text: "Custom reporting",
+                tooltip: null
+              }
             ],
             cta: "Start Pro Trial",
             badge: "Most Popular"
@@ -338,11 +385,30 @@ const resources = {
             period: "pricing",
             description: "For large organizations",
             features: [
-              "White-label solution",
-              "Custom integrations",
-              "Dedicated support",
-              "Advanced security",
-              "Custom features"
+              {
+                text: "Everything in Professional, plus:",
+                tooltip: null
+              },
+              {
+                text: "White-label solution",
+                tooltip: null
+              },
+              {
+                text: "Advanced AI risk assessment",
+                tooltip: null
+              },
+              {
+                text: "Custom integrations",
+                tooltip: "Tailored integrations with your systems"
+              },
+              {
+                text: "Dedicated account manager",
+                tooltip: null
+              },
+              {
+                text: "Advanced compliance tools",
+                tooltip: "Meet regulatory requirements with ease"
+              }
             ],
             cta: "Contact Sales"
           }
@@ -393,6 +459,94 @@ const resources = {
           cookies: "Cookie Policy",
         },
         rights: "All rights reserved.",
+      },
+      serviceModal: {
+        defaultDetail: "More detailed information about this service will be shown here. You can customize this per service item."
+      },
+      pricingComponent: {
+        monthly: "Monthly",
+        yearly: "Yearly",
+        mostPopular: "Most Popular",
+        off: "% off",
+        month: "month",
+        year: "year"
+      },
+      aboutContent: {
+        title: "About Fundify",
+        subtitle: "We're on a mission to democratize fundraising and make it accessible to everyone, from individual creators to large organizations.",
+        mission: {
+          title: "Our Mission",
+          description: "At Fundify, we believe that great ideas shouldn't be limited by financial constraints. Our platform empowers individuals and organizations to bring their visions to life through innovative fundraising solutions."
+        },
+        vision: {
+          title: "Our Vision",
+          description: "We envision a world where funding flows freely to the most impactful projects, creating positive change across communities and industries worldwide."
+        },
+        whoWeAre: {
+          title: "Who We Are",
+          paragraph1: "Fundify was born from a simple observation: too many brilliant ideas never see the light of day due to funding barriers. Founded in 2023 by a team of passionate entrepreneurs, technologists, and financial experts, we set out to bridge the gap between innovative projects and the capital they need to succeed.",
+          paragraph2: "Our diverse team brings together decades of experience from fintech, venture capital, and startup ecosystems. We understand both sides of the funding equation – the challenges faced by project creators and the needs of investors and backers looking for meaningful opportunities to support.",
+          paragraph3: "Today, Fundify serves thousands of creators, entrepreneurs, and organizations worldwide, having facilitated over $50 million in successful funding campaigns. We're not just a platform; we're a community dedicated to turning ideas into reality."
+        },
+        values: {
+          title: "Our Values",
+          transparency: {
+            title: "Transparency",
+            description: "Clear, honest communication in all our interactions"
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Continuously improving our platform and services"
+          },
+          community: {
+            title: "Community",
+            description: "Building connections between funders and creators"
+          }
+        }
+      },
+      contactContent: {
+        title: "Get in Touch",
+        subtitle: "Ready to start your fundraising journey? Send us a message and we'll get back to you soon.",
+        form: {
+          title: "Get in Touch",
+          description: "Ready to start your fundraising journey? Send us a message and we'll get back to you soon.",
+          firstName: {
+            label: "First Name",
+            placeholder: "John"
+          },
+          lastName: {
+            label: "Last Name",
+            placeholder: "Doe"
+          },
+          email: {
+            label: "Email",
+            placeholder: "john@example.com"
+          },
+          subject: {
+            label: "Subject",
+            placeholder: "How can we help?"
+          },
+          message: {
+            label: "Message",
+            placeholder: "Tell us more about your project or question..."
+          },
+          sendButton: "Send Message",
+          whatsappButton: "WhatsApp Us"
+        },
+        contactInfo: {
+          phone: {
+            label: "Phone:",
+            value: "+971 4 123 4567"
+          },
+          location: {
+            label: "Location:",
+            value: "Dubai Internet City, Dubai, UAE"
+          },
+          email: {
+            label: "Email:",
+            value: "contact@fundify.com"
+          }
+        }
       },
     },
   },
@@ -697,30 +851,77 @@ const resources = {
           subtitle: "اختر الخطة المثالية لرحلة جمع التبرعات الخاصة بك"
         },
         plans: {
-          free: {
-            title: "مجاني",
+          starter: {
+            title: "مبتدئ",
             price: "0 درهم",
             period: "شهرياً",
             description: "مثالي للبداية",
             features: [
-              "إنشاء حملة أساسية",
-              "مشاركة وسائل التواصل الاجتماعي",
-              "تحليلات أساسية",
-              "دعم المجتمع"
+              {
+                text: "لوحة تحكم مالية أساسية",
+                tooltip: "تتبع الدخل والمصروفات والتدفق النقدي"
+              },
+              {
+                text: "حتى 3 طلبات قروض",
+                tooltip: null
+              },
+              {
+                text: "تصنيف المصروفات بالذكاء الاصطناعي",
+                tooltip: null
+              },
+              {
+                text: "مطابقة الأموال الأساسية",
+                tooltip: "احصل على مطابقة مع خيارات التمويل المناسبة"
+              },
+              {
+                text: "دعم البريد الإلكتروني",
+                tooltip: "احصل على المساعدة عبر البريد الإلكتروني خلال 24 ساعة"
+              },
+              {
+                text: "الوصول لتطبيق الهاتف المحمول",
+                tooltip: null
+              }
             ],
             cta: "ابدأ الآن"
           },
-          pro: {
+          professional: {
             title: "احترافي",
             price: "99 درهم",
             period: "شهرياً",
             description: "لجامعي التبرعات الجادين",
             features: [
-              "أدوات حملة متقدمة",
-              "علامة تجارية مخصصة",
-              "تحليلات مفصلة",
-              "دعم أولوية",
-              "تعاون الفريق"
+              {
+                text: "كل ما في المبتدئ، بالإضافة إلى:",
+                tooltip: null
+              },
+              {
+                text: "تحليلات مالية متقدمة",
+                tooltip: "تقارير مفصلة وتوقعات"
+              },
+              {
+                text: "طلبات قروض غير محدودة",
+                tooltip: null
+              },
+              {
+                text: "تقييم ائتماني بالذكاء الاصطناعي",
+                tooltip: null
+              },
+              {
+                text: "مطابقة أموال متميزة",
+                tooltip: "الوصول لفرص تمويل حصرية"
+              },
+              {
+                text: "إدارة القروض الآلية",
+                tooltip: "تتبع المدفوعات والفوائد والجداول تلقائياً"
+              },
+              {
+                text: "دعم أولوية",
+                tooltip: "دعم الهاتف والدردشة"
+              },
+              {
+                text: "تقارير مخصصة",
+                tooltip: null
+              }
             ],
             cta: "ابدأ التجربة المجانية",
             badge: "الأكثر شعبية"
@@ -731,11 +932,30 @@ const resources = {
             period: "مخصص",
             description: "للمنظمات الكبيرة",
             features: [
-              "حل العلامة البيضاء",
-              "تكاملات مخصصة",
-              "دعم مخصص",
-              "أمان متقدم",
-              "ميزات مخصصة"
+              {
+                text: "كل ما في الاحترافي، بالإضافة إلى:",
+                tooltip: null
+              },
+              {
+                text: "حل العلامة البيضاء",
+                tooltip: null
+              },
+              {
+                text: "تقييم مخاطر متقدم بالذكاء الاصطناعي",
+                tooltip: null
+              },
+              {
+                text: "تكاملات مخصصة",
+                tooltip: "تكاملات مصممة خصيصاً لأنظمتك"
+              },
+              {
+                text: "مدير حساب مخصص",
+                tooltip: null
+              },
+              {
+                text: "أدوات امتثال متقدمة",
+                tooltip: "تلبية المتطلبات التنظيمية بسهولة"
+              }
             ],
             cta: "اتصل بالمبيعات"
           }
@@ -786,6 +1006,94 @@ const resources = {
           cookies: "سياسة ملفات تعريف الارتباط",
         },
         rights: "جميع الحقوق محفوظة.",
+      },
+      serviceModal: {
+        defaultDetail: "سيتم عرض معلومات أكثر تفصيلاً حول هذه الخدمة هنا. يمكنك تخصيص هذا لكل عنصر خدمة."
+      },
+      pricingComponent: {
+        monthly: "شهرياً",
+        yearly: "سنوياً",
+        mostPopular: "الأكثر شعبية",
+        off: "% خصم",
+        month: "شهر",
+        year: "سنة"
+      },
+      aboutContent: {
+        title: "حول فنديفاي",
+        subtitle: "نحن في مهمة لإضفاء الطابع الديمقراطي على جمع التبرعات وجعلها متاحة للجميع، من المبدعين الأفراد إلى المنظمات الكبيرة.",
+        mission: {
+          title: "مهمتنا",
+          description: "في فنديفاي، نؤمن أن الأفكار العظيمة لا يجب أن تكون محدودة بالقيود المالية. منصتنا تمكن الأفراد والمنظمات من تحقيق رؤاهم من خلال حلول جمع التبرعات المبتكرة."
+        },
+        vision: {
+          title: "رؤيتنا",
+          description: "نتصور عالماً يتدفق فيه التمويل بحرية إلى المشاريع الأكثر تأثيراً، مما يخلق تغييراً إيجابياً عبر المجتمعات والصناعات في جميع أنحاء العالم."
+        },
+        whoWeAre: {
+          title: "من نحن",
+          paragraph1: "وُلدت فنديفاي من ملاحظة بسيطة: الكثير من الأفكار الرائعة لا ترى النور أبداً بسبب حواجز التمويل. تأسست في عام 2023 من قبل فريق من رجال الأعمال المتحمسين والتقنيين والخبراء الماليين، وضعنا هدفاً لسد الفجوة بين المشاريع المبتكرة ورأس المال الذي تحتاجه للنجاح.",
+          paragraph2: "فريقنا المتنوع يجمع عقوداً من الخبرة من التكنولوجيا المالية ورأس المال الاستثماري وأنظمة الشركات الناشئة. نحن نفهم كلا جانبي معادلة التمويل - التحديات التي يواجهها منشئو المشاريع واحتياجات المستثمرين والداعمين الذين يبحثون عن فرص ذات مغزى للدعم.",
+          paragraph3: "اليوم، تخدم فنديفاي آلاف المبدعين ورجال الأعمال والمنظمات في جميع أنحاء العالم، بعد أن سهلت أكثر من 50 مليون دولار في حملات التمويل الناجحة. نحن لسنا مجرد منصة؛ نحن مجتمع مكرس لتحويل الأفكار إلى واقع."
+        },
+        values: {
+          title: "قيمنا",
+          transparency: {
+            title: "الشفافية",
+            description: "التواصل الواضح والصادق في جميع تفاعلاتنا"
+          },
+          innovation: {
+            title: "الابتكار",
+            description: "التحسين المستمر لمنصتنا وخدماتنا"
+          },
+          community: {
+            title: "المجتمع",
+            description: "بناء الروابط بين الممولين والمبدعين"
+          }
+        }
+      },
+      contactContent: {
+        title: "تواصل معنا",
+        subtitle: "مستعد لبدء رحلة جمع التبرعات؟ أرسل لنا رسالة وسنعود إليك قريباً.",
+        form: {
+          title: "تواصل معنا",
+          description: "مستعد لبدء رحلة جمع التبرعات؟ أرسل لنا رسالة وسنعود إليك قريباً.",
+          firstName: {
+            label: "الاسم الأول",
+            placeholder: "أحمد"
+          },
+          lastName: {
+            label: "اسم العائلة",
+            placeholder: "محمد"
+          },
+          email: {
+            label: "البريد الإلكتروني",
+            placeholder: "ahmed@example.com"
+          },
+          subject: {
+            label: "الموضوع",
+            placeholder: "كيف يمكننا مساعدتك؟"
+          },
+          message: {
+            label: "الرسالة",
+            placeholder: "أخبرنا المزيد عن مشروعك أو سؤالك..."
+          },
+          sendButton: "إرسال الرسالة",
+          whatsappButton: "راسلنا على واتساب"
+        },
+        contactInfo: {
+          phone: {
+            label: "الهاتف:",
+            value: "+971 4 123 4567"
+          },
+          location: {
+            label: "الموقع:",
+            value: "مدينة دبي للإنترنت، دبي، الإمارات العربية المتحدة"
+          },
+          email: {
+            label: "البريد الإلكتروني:",
+            value: "contact@fundify.com"
+          }
+        }
       },
     },
   },

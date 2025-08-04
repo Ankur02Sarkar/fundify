@@ -9,6 +9,9 @@ import {
   DialogClose,
 } from '@/components/ui/dialog'
 import { X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
+import i18n from '@/lib/i18n'
 
 interface ServiceModalProps {
   open: boolean
@@ -25,6 +28,12 @@ export default function ServiceModal({
   onOpenChange,
   service,
 }: ServiceModalProps) {
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    i18n.loadNamespaces('translation')
+  }, [])
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
@@ -40,8 +49,7 @@ export default function ServiceModal({
         </DialogHeader>
 
         <div className="mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-          {service.detail ??
-            'More detailed information about this service will be shown here. You can customize this per service item.'}
+          {service.detail ?? t('serviceModal.defaultDetail')}
         </div>
       </DialogContent>
     </Dialog>

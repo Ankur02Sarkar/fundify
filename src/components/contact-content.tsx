@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 import GoogleMapReact from 'google-map-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Mail, Phone, MapPin, Send } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import i18n from '@/lib/i18n'
 
 // Dubai coordinates
 const DUBAI_COORDINATES = {
@@ -106,6 +108,7 @@ const inputVariants = {
 }
 
 export default function ContactContent() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -113,6 +116,10 @@ export default function ContactContent() {
     subject: '',
     message: ''
   })
+
+  useEffect(() => {
+    i18n.loadNamespaces('translation')
+  }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -218,8 +225,8 @@ export default function ContactContent() {
                 <Phone className="h-4 w-4 text-white" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900">Phone:</p>
-                <p className="text-sm text-gray-600">+971 4 123 4567</p>
+                <p className="text-sm font-medium text-gray-900">{t('contactContent.contactInfo.phone.label')}:</p>
+                <p className="text-sm text-gray-600">{t('contactContent.contactInfo.phone.value')}</p>
               </div>
             </div>
           </motion.div>
@@ -239,8 +246,8 @@ export default function ContactContent() {
                   <MapPin className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Location:</p>
-                  <p className="text-sm text-gray-600">Dubai Internet City, Dubai, UAE</p>
+                  <p className="text-sm font-medium text-gray-900">{t('contactContent.contactInfo.location.label')}:</p>
+                  <p className="text-sm text-gray-600">{t('contactContent.contactInfo.location.value')}</p>
                 </div>
               </div>
             </motion.div>
@@ -258,8 +265,8 @@ export default function ContactContent() {
                   <Mail className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-900">Email:</p>
-                  <p className="text-sm text-gray-600">contact@fundify.com</p>
+                  <p className="text-sm font-medium text-gray-900">{t('contactContent.contactInfo.email.label')}:</p>
+                  <p className="text-sm text-gray-600">{t('contactContent.contactInfo.email.value')}</p>
                 </div>
               </div>
             </motion.div>
@@ -275,13 +282,13 @@ export default function ContactContent() {
               variants={inputVariants}
               className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent mb-2"
             >
-              Get in Touch
+              {t('contactContent.form.title')}
             </motion.h2>
             <motion.p 
               variants={inputVariants}
               className="text-slate-600 dark:text-slate-300"
             >
-              Ready to start your fundraising journey? Send us a message and we'll get back to you soon.
+              {t('contactContent.form.description')}
             </motion.p>
           </div>
           
@@ -296,7 +303,7 @@ export default function ContactContent() {
                 transition={{ duration: 0.2 }}
               >
                 <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  First Name
+                  {t('contactContent.form.firstName.label')}
                 </label>
                 <Input
                   type="text"
@@ -305,7 +312,7 @@ export default function ContactContent() {
                   value={formData.firstName}
                   onChange={handleInputChange}
                   className="rounded-xl border-blue-200 focus:border-blue-400 focus:ring-blue-400/20 bg-white/80 dark:bg-slate-800/80"
-                  placeholder="John"
+                  placeholder={t('contactContent.form.firstName.placeholder')}
                   required
                 />
               </motion.div>
@@ -315,7 +322,7 @@ export default function ContactContent() {
                 transition={{ duration: 0.2 }}
               >
                 <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                  Last Name
+                  {t('contactContent.form.lastName.label')}
                 </label>
                 <Input
                   type="text"
@@ -324,7 +331,7 @@ export default function ContactContent() {
                   value={formData.lastName}
                   onChange={handleInputChange}
                   className="rounded-xl border-blue-200 focus:border-blue-400 focus:ring-blue-400/20 bg-white/80 dark:bg-slate-800/80"
-                  placeholder="Doe"
+                  placeholder={t('contactContent.form.lastName.placeholder')}
                   required
                 />
               </motion.div>
@@ -337,7 +344,7 @@ export default function ContactContent() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                Email
+                {t('contactContent.form.email.label')}
               </label>
               <Input
                 type="email"
@@ -346,7 +353,7 @@ export default function ContactContent() {
                 value={formData.email}
                 onChange={handleInputChange}
                 className="rounded-xl border-blue-200 focus:border-blue-400 focus:ring-blue-400/20 bg-white/80 dark:bg-slate-800/80"
-                placeholder="john@example.com"
+                placeholder={t('contactContent.form.email.placeholder')}
                 required
               />
             </motion.div>
@@ -358,7 +365,7 @@ export default function ContactContent() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                Subject
+                {t('contactContent.form.subject.label')}
               </label>
               <Input
                 type="text"
@@ -367,7 +374,7 @@ export default function ContactContent() {
                 value={formData.subject}
                 onChange={handleInputChange}
                 className="rounded-xl border-blue-200 focus:border-blue-400 focus:ring-blue-400/20 bg-white/80 dark:bg-slate-800/80"
-                placeholder="How can we help?"
+                placeholder={t('contactContent.form.subject.placeholder')}
                 required
               />
             </motion.div>
@@ -379,7 +386,7 @@ export default function ContactContent() {
               transition={{ duration: 0.2 }}
             >
               <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                Message
+                {t('contactContent.form.message.label')}
               </label>
               <Textarea
                 id="message"
@@ -388,7 +395,7 @@ export default function ContactContent() {
                 value={formData.message}
                 onChange={handleInputChange}
                 className="rounded-xl border-blue-200 focus:border-blue-400 focus:ring-blue-400/20 bg-white/80 dark:bg-slate-800/80 resize-none"
-                placeholder="Tell us more about your project or question..."
+                placeholder={t('contactContent.form.message.placeholder')}
                 required
               />
             </motion.div>
@@ -402,7 +409,7 @@ export default function ContactContent() {
               >
                 <Button type="submit" className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 transition-all duration-300 py-3 shadow-lg">
                   <Send className="h-4 w-4 mr-2" />
-                  Send Message
+                  {t('contactContent.form.sendButton')}
                 </Button>
               </motion.div>
 
@@ -420,7 +427,7 @@ export default function ContactContent() {
                   <svg className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
-                  WhatsApp Us
+                  {t('contactContent.form.whatsappButton')}
                 </Button>
               </motion.div>
             </motion.div>

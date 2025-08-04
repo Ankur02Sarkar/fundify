@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import {
 	Tooltip,
@@ -11,6 +11,8 @@ import { cn } from '@/lib/utils';
 import { CheckCircleIcon, StarIcon, TrendingUpIcon } from 'lucide-react';
 import Link from 'next/link';
 import { motion, type Transition } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import i18n from '@/lib/i18n';
 
 type FREQUENCY = 'monthly' | 'yearly';
 const frequencies: FREQUENCY[] = ['monthly', 'yearly'];
@@ -45,9 +47,14 @@ export function PricingSection({
 	description,
 	...props
 }: PricingSectionProps) {
+	const { t } = useTranslation();
 	const [frequency, setFrequency] = React.useState<'monthly' | 'yearly'>(
 		'monthly',
 	);
+
+	useEffect(() => {
+		i18n.loadNamespaces('translation');
+	}, []);
 
 	return (
 		<div
@@ -113,6 +120,8 @@ export function PricingFrequencyToggle({
 	setFrequency,
 	...props
 }: PricingFrequencyToggleProps) {
+	const { t } = useTranslation();
+
 	return (
 			<div
 				className={cn(
@@ -129,7 +138,7 @@ export function PricingFrequencyToggle({
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<span className={cn(frequency === freq && 'text-white', "relative z-10")}>{freq}</span>
+						<span className={cn(frequency === freq && 'text-white', "relative z-10")}>{t(`pricingComponent.${freq}`)}</span>
 						{frequency === freq && (
 							<motion.span
 								layoutId="frequency"
@@ -154,14 +163,15 @@ export function PricingCard({
 	frequency = frequencies[0],
 	...props
 }: PricingCardProps) {
+	const { t } = useTranslation();
 	// Extract only safe props for motion.div
 	const { 
-		onAnimationStart, onAnimationEnd, onAnimationIteration,
-		onDrag, onDragEnd, onDragStart, onDrop,
-		onMouseDown, onMouseUp, onMouseMove,
-		onTouchStart, onTouchEnd, onTouchMove,
-		...safeProps 
-	} = props;
+			onAnimationStart, onAnimationEnd, onAnimationIteration,
+			onDrag, onDragEnd, onDragStart, onDrop,
+			onMouseDown, onMouseUp, onMouseMove,
+			onTouchStart, onTouchEnd, onTouchMove,
+			...safeProps 
+		} = props;
 	
 	return (
 		<motion.div
@@ -200,7 +210,7 @@ export function PricingCard({
 							transition={{ type: 'spring', delay: 0.5 }}
 						>
 							<StarIcon className="h-3 w-3 fill-current" />
-							Most Popular
+						{t('pricingComponent.mostPopular')}
 						</motion.div>
 					)}
 					{frequency === 'yearly' && plan.name !== 'Free' && (
@@ -216,8 +226,8 @@ export function PricingCard({
 									plan.price.monthly /
 									12) *
 									100,
-							)}
-							% off
+						)}
+						{t('pricingComponent.off')}
 						</motion.div>
 					)}
 				</div>
@@ -234,10 +244,10 @@ export function PricingCard({
 						${plan.price[frequency]}
 					</span>
 					<span className="text-blue-600 dark:text-blue-400 text-sm mb-1">
-						{plan.name !== 'Free'
-							? '/' + (frequency === 'monthly' ? 'month' : 'year')
-							: ''}
-					</span>
+					{plan.name !== 'Free'
+						? '/' + (frequency === 'monthly' ? t('pricingComponent.month') : t('pricingComponent.year'))
+						: ''}
+				</span>
 				</motion.h3>
 			</div>
 			<div
